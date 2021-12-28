@@ -6,11 +6,16 @@ import dev.foltz.chunkedquadcells.world.cell.Cell;
 import dev.foltz.chunkedquadcells.world.cell.CellEmpty;
 import dev.foltz.chunkedquadcells.world.cell.CellOutOfBounds;
 
+import javax.swing.event.ListDataEvent;
+import java.util.Arrays;
+import java.util.Objects;
+
 public class TileQuad implements ITile {
     public final int x, y;
     private final int power;
     public final int size;
     public final ITile[] children;
+    private boolean isDirty = false;
 
     public TileQuad(int x, int y, int power) {
         assert power > 0;
@@ -22,17 +27,31 @@ public class TileQuad implements ITile {
     }
 
     @Override
+    public void markDirty() {
+        isDirty = true;
+        for (ITile child : children) {
+            if (child == null) {
+                continue;
+            }
+            child.markDirty();
+        }
+    }
+
+    @Override
     public boolean shouldUpdate() {
-        return true;
+        return isDirty || Arrays.stream(children).filter(Objects::nonNull).anyMatch(ITile::shouldUpdate);
     }
 
     @Override
     public void update(World world) {
+        int dirtyTiles = 0;
         for (ITile child : children) {
             if (child != null && child.shouldUpdate()) {
+                dirtyTiles += 1;
                 child.update(world);
             }
         }
+        isDirty = dirtyTiles > 0;
     }
 
     @Override
@@ -85,7 +104,7 @@ public class TileQuad implements ITile {
         }
 
         if (children[index].setCellAt(x, y, cell)) {
-            // Should update
+            isDirty = true;
         }
 
         for (int i = 0; i < children.length; i++) {

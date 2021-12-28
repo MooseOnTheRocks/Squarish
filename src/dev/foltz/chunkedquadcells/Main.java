@@ -64,6 +64,9 @@ public class Main extends PApplet {
                 noStroke();
                 noFill();
             }
+            if (quad.shouldUpdate()) {
+                fill(255, 0, 0);
+            }
             rect(0, 0, quad.size() * CELL_SIZE, quad.size() * CELL_SIZE);
             pop();
 
@@ -81,6 +84,9 @@ public class Main extends PApplet {
             stroke(0);
             strokeWeight(1);
             fill(single.cell.getColor());
+            if (single.shouldUpdate()) {
+                fill(255, 0, 0);
+            }
             rect(0, 0, CELL_SIZE, CELL_SIZE);
             pop();
         }
@@ -92,6 +98,7 @@ public class Main extends PApplet {
         fill(255);
         textSize(16);
         text("FPS: " + frameRate, 24, 24);
+        text("Chunk updates: " + world.chunkUpdates, 24, 24 + 16);
         pop();
     }
 

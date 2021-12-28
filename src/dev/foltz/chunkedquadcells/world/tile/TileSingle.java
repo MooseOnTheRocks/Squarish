@@ -7,6 +7,7 @@ import dev.foltz.chunkedquadcells.world.cell.CellEmpty;
 public class TileSingle implements ITile {
     public final int x, y;
     public Cell cell;
+    private boolean isDirty = false;
 
     public TileSingle(int x, int y, Cell cell) {
         this.x = x;
@@ -15,8 +16,13 @@ public class TileSingle implements ITile {
     }
 
     @Override
+    public void markDirty() {
+        isDirty = true;
+    }
+
+    @Override
     public boolean shouldUpdate() {
-        return true;
+        return isDirty;
     }
 
     @Override
@@ -25,6 +31,7 @@ public class TileSingle implements ITile {
             cell.lastTick = world.currentTick;
             cell.update(world, x, y);
         }
+        isDirty = cell.shouldUpdate(world, x, y);
     }
 
     @Override
@@ -37,6 +44,7 @@ public class TileSingle implements ITile {
     public boolean setCellAt(int x, int y, Cell cell) {
         if (x != this.x || y != this.y) return false;
         this.cell = cell;
+        isDirty = true;
         return true;
     }
 

@@ -13,4 +13,5 @@ public interface ITile {
     boolean setCellAt(int x, int y, Cell cell);
     void update(World world);
     boolean shouldUpdate();
+    void markDirty();
 }

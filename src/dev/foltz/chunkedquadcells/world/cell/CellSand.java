@@ -4,6 +4,13 @@ import dev.foltz.chunkedquadcells.world.World;
 
 public class CellSand extends Cell {
     @Override
+    public boolean shouldUpdate(World world, int x, int y) {
+        return world.getCellAt(x, y + 1).isEmpty()
+                || world.getCellAt(x - 1, y + 1).isEmpty()
+                || world.getCellAt(x + 1, y + 1).isEmpty();
+    }
+
+    @Override
     public void update(World world, int x, int y) {
         if (world.getCellAt(x, y + 1).isEmpty()) {
             world.setCellAt(x, y + 1, this);
