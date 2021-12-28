@@ -10,6 +10,7 @@ public interface ITile {
     boolean isEmpty();
     boolean isContiguous(Class<? extends Cell> cellClass);
     Cell getCellAt(int x, int y);
-    void setCellAt(int x, int y, Cell cell);
+    boolean setCellAt(int x, int y, Cell cell);
     void update(World world);
+    boolean shouldUpdate();
 }

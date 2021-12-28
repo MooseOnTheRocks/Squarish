@@ -1,5 +1,6 @@
 package dev.foltz.chunkedquadcells.world.tile;
 
+import dev.foltz.chunkedquadcells.Main;
 import dev.foltz.chunkedquadcells.world.World;
 import dev.foltz.chunkedquadcells.world.cell.Cell;
 import dev.foltz.chunkedquadcells.world.cell.CellEmpty;
@@ -21,9 +22,14 @@ public class TileQuad implements ITile {
     }
 
     @Override
+    public boolean shouldUpdate() {
+        return true;
+    }
+
+    @Override
     public void update(World world) {
         for (ITile child : children) {
-            if (child != null) {
+            if (child != null && child.shouldUpdate()) {
                 child.update(world);
             }
         }
@@ -65,8 +71,8 @@ public class TileQuad implements ITile {
     }
 
     @Override
-    public void setCellAt(int x, int y, Cell cell) {
-        if (!inRange(x, y)) return;
+    public boolean setCellAt(int x, int y, Cell cell) {
+        if (!inRange(x, y)) return false;
         boolean bx = x < this.x + size / 2;
         boolean by = y < this.y + size / 2;
         int index = (bx ? 0 : 1) + (by ? 0 : 2);
@@ -77,7 +83,10 @@ public class TileQuad implements ITile {
             int yy = this.y + oy;
             children[index] = createChild(xx, yy);
         }
-        children[index].setCellAt(x, y, cell);
+
+        if (children[index].setCellAt(x, y, cell)) {
+            // Should update
+        }
 
         for (int i = 0; i < children.length; i++) {
             ITile child = children[i];
@@ -85,6 +94,7 @@ public class TileQuad implements ITile {
                 children[i] = null;
             }
         }
+        return true;
     }
 
     @Override

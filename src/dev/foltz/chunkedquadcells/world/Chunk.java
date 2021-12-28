@@ -18,6 +18,10 @@ public class Chunk {
         root = new TileQuad(x * CHUNK_SIZE, y * CHUNK_SIZE, CHUNK_DEPTH - 1);
     }
 
+    public boolean shouldUpdate() {
+        return root.shouldUpdate();
+    }
+
     public boolean isEmpty() {
         return root.isEmpty();
     }
@@ -30,8 +34,8 @@ public class Chunk {
         return root.getCellAt(x, y);
     }
 
-    public void setCellAt(int x, int y, Cell cell) {
-        root.setCellAt(x, y, cell);
+    public boolean setCellAt(int x, int y, Cell cell) {
+        return root.setCellAt(x, y, cell);
     }
 
     @Override

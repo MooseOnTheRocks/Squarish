@@ -15,7 +15,7 @@ import processing.event.MouseEvent;
 import static dev.foltz.chunkedquadcells.world.cell.Cell.CELL_SIZE;
 
 public class Main extends PApplet {
-    public World world;
+    public static World world;
     boolean mouseLeftPressed = false;
     boolean mouseRightPressed = false;
 
@@ -29,7 +29,7 @@ public class Main extends PApplet {
     public void setup() {
         this.frameRate(24);
         this.surface.setResizable(true);
-        this.surface.setTitle("ChunkedQuadCells");
+        this.surface.setTitle("Squarish");
 
         world = new World();
         world.createChunk(0, 0);
@@ -86,6 +86,15 @@ public class Main extends PApplet {
         }
     }
 
+    public void renderGUI() {
+        push();
+        stroke(0);
+        fill(255);
+        textSize(16);
+        text("FPS: " + frameRate, 24, 24);
+        pop();
+    }
+
     public int getCameraOffsetX() {
         return (width - Chunk.CHUNK_SIZE * CELL_SIZE) / 2;
     }
@@ -114,8 +123,11 @@ public class Main extends PApplet {
         background(204);
         int cameraOffsetX = getCameraOffsetX();
         int cameraOffsetY = getCameraOffsetY();
+        push();
         translate(cameraOffsetX, cameraOffsetY);
         renderWorld(world);
+        pop();
+        renderGUI();
     }
 
     @Override

@@ -39,10 +39,10 @@ public class World {
         return chunk.getCellAt(x, y);
     }
 
-    public void setCellAt(int x, int y, Cell cell) {
+    public boolean setCellAt(int x, int y, Cell cell) {
         int cx = (int) Math.floor((float) x / (float) Chunk.CHUNK_SIZE);
         int cy = (int) Math.floor((float) y / (float) Chunk.CHUNK_SIZE);
-        if (cy > 0) return;
+        if (cy > 0) return false;
         Chunk chunk = loadedChunks.stream()
                 .filter(c -> c.chunkX == cx && c.chunkY == cy)
                 .findFirst()
@@ -50,7 +50,7 @@ public class World {
                         .filter(c -> c.chunkX == cx && c.chunkY == cy)
                         .findFirst()
                         .orElse(createChunk(cx, cy)));
-        chunk.setCellAt(x, y, cell);
+        return chunk.setCellAt(x, y, cell);
     }
 
     public Chunk createChunk(int chunkX, int chunkY) {

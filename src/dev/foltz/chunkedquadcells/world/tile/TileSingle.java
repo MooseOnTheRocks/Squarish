@@ -15,6 +15,11 @@ public class TileSingle implements ITile {
     }
 
     @Override
+    public boolean shouldUpdate() {
+        return true;
+    }
+
+    @Override
     public void update(World world) {
         if (cell.lastTick != world.currentTick) {
             cell.lastTick = world.currentTick;
@@ -29,9 +34,10 @@ public class TileSingle implements ITile {
     }
 
     @Override
-    public void setCellAt(int x, int y, Cell cell) {
-        if (x != this.x || y != this.y) return;
+    public boolean setCellAt(int x, int y, Cell cell) {
+        if (x != this.x || y != this.y) return false;
         this.cell = cell;
+        return true;
     }
 
     @Override
