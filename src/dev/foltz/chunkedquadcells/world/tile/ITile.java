@@ -13,5 +13,7 @@ public interface ITile {
     boolean setCellAt(int x, int y, Cell cell);
     void update(World world);
     boolean shouldUpdate();
-    void markDirty();
+    void forceUpdate();
+    void markDirty(int x, int y);
+    boolean isAdjacent(int x, int y);
 }

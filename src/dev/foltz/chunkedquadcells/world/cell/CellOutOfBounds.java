@@ -7,6 +7,6 @@ public class CellOutOfBounds extends Cell {
 
     @Override
     public int getColor() {
-        return 0x000000ff;
+        return 0xff000000;
     }
 }

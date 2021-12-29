@@ -34,6 +34,6 @@ public class CellSand extends Cell {
 
     @Override
     public int getColor() {
-        return 0xddd0a0ff;
+        return 0xffddd0a0;
     }
 }

@@ -1,14 +1,14 @@
 package dev.foltz.chunkedquadcells.world.tile;
 
-import dev.foltz.chunkedquadcells.Main;
 import dev.foltz.chunkedquadcells.world.World;
 import dev.foltz.chunkedquadcells.world.cell.Cell;
 import dev.foltz.chunkedquadcells.world.cell.CellEmpty;
 import dev.foltz.chunkedquadcells.world.cell.CellOutOfBounds;
 
-import javax.swing.event.ListDataEvent;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Stream;
 
 public class TileQuad implements ITile {
     public final int x, y;
@@ -27,19 +27,44 @@ public class TileQuad implements ITile {
     }
 
     @Override
-    public void markDirty() {
+    public void markDirty(int x, int y) {
+        if (isAdjacent(x, y)) {
+            for (ITile child : children) {
+                if (child != null) {
+                    child.markDirty(x, y);
+                }
+            }
+            isDirty = true;
+        }
+    }
+
+    @Override
+    public boolean isAdjacent(int x, int y) {
+        return inRange(x, y)
+                || inRange(x - 1, y)
+                || inRange(x + 1, y)
+                || inRange(x, y - 1)
+                || inRange(x, y + 1)
+                || inRange(x - 1, y - 1)
+                || inRange(x + 1, y - 1)
+                || inRange(x - 1, y + 1)
+                || inRange(x + 1, y + 1);
+    }
+
+    @Override
+    public void forceUpdate() {
         isDirty = true;
         for (ITile child : children) {
             if (child == null) {
                 continue;
             }
-            child.markDirty();
+            child.forceUpdate();
         }
     }
 
     @Override
     public boolean shouldUpdate() {
-        return isDirty || Arrays.stream(children).filter(Objects::nonNull).anyMatch(ITile::shouldUpdate);
+        return isDirty;
     }
 
     @Override
@@ -51,6 +76,7 @@ public class TileQuad implements ITile {
                 child.update(world);
             }
         }
+
         isDirty = dirtyTiles > 0;
     }
 
@@ -113,6 +139,7 @@ public class TileQuad implements ITile {
                 children[i] = null;
             }
         }
+
         return true;
     }
 

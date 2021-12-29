@@ -49,8 +49,14 @@ public class Main extends PApplet {
     }
 
     public void renderTile(ITile tile) {
+        int mx = mouseX - getCameraOffsetX();
+        int my = mouseY - getCameraOffsetY();
+        int worldX = (int) Math.floor((float) mx / (float) CELL_SIZE);
+        int worldY = (int) Math.floor((float) my / (float) CELL_SIZE);
+
         if (tile instanceof TileQuad quad) {
             boolean renderChildren = true;
+
             push();
             translate(quad.getX() * CELL_SIZE, quad.getY() * CELL_SIZE);
             stroke(0);
@@ -66,6 +72,9 @@ public class Main extends PApplet {
             }
             if (quad.shouldUpdate()) {
                 fill(255, 0, 0);
+            }
+            if (quad.isAdjacent(worldX, worldY)) {
+                fill(0, 255, 0);
             }
             rect(0, 0, quad.size() * CELL_SIZE, quad.size() * CELL_SIZE);
             pop();
@@ -86,6 +95,9 @@ public class Main extends PApplet {
             fill(single.cell.getColor());
             if (single.shouldUpdate()) {
                 fill(255, 0, 0);
+            }
+            if (single.isAdjacent(worldX, worldY)) {
+                fill(0, 255, 0);
             }
             rect(0, 0, CELL_SIZE, CELL_SIZE);
             pop();

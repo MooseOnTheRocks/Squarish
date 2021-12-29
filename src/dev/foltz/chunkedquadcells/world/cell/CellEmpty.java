@@ -7,7 +7,7 @@ public class CellEmpty extends Cell {
 
     @Override
     public int getColor() {
-        return 0xffff0000;
+        return 0xff000000;
     }
 
     @Override

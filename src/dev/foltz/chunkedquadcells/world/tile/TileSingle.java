@@ -16,7 +16,31 @@ public class TileSingle implements ITile {
     }
 
     @Override
-    public void markDirty() {
+    public boolean isAdjacent(int x, int y) {
+        return inRange(x, y)
+                || inRange(x - 1, y)
+                || inRange(x + 1, y)
+                || inRange(x, y - 1)
+                || inRange(x, y + 1)
+                || inRange(x - 1, y - 1)
+                || inRange(x + 1, y - 1)
+                || inRange(x - 1, y + 1)
+                || inRange(x + 1, y + 1);
+    }
+
+    private boolean inRange(int x, int y) {
+        return x == this.x && y == this.y;
+    }
+
+    @Override
+    public void markDirty(int x, int y) {
+        if (isAdjacent(x, y)) {
+            isDirty = true;
+        }
+    }
+
+    @Override
+    public void forceUpdate() {
         isDirty = true;
     }
 
