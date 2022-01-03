@@ -4,7 +4,10 @@ import dev.foltz.chunkedquadcells.world.cell.Cell;
 import dev.foltz.chunkedquadcells.world.tile.ITile;
 import dev.foltz.chunkedquadcells.world.tile.TileQuad;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class Chunk {
     public static final int CHUNK_DEPTH = 5;
@@ -19,7 +22,7 @@ public class Chunk {
     }
 
     public boolean shouldUpdate() {
-        return root.shouldUpdate();
+        return true;
     }
 
     public boolean isEmpty() {
@@ -27,7 +30,7 @@ public class Chunk {
     }
 
     public void update(World world) {
-        root.update(world);
+
     }
 
     public Cell getCellAt(int x, int y) {

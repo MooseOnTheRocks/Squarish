@@ -30,59 +30,26 @@ public class World {
     }
 
     public Cell getCellAt(int x, int y) {
+        Chunk chunk = getChunkAt(x, y);
+        return chunk == null ? CellEmpty.INSTANCE : chunk.getCellAt(x, y);
+    }
+
+    public Chunk getChunkAt(int x, int y) {
         int cx = (int) Math.floor((float) x / (float) Chunk.CHUNK_SIZE);
         int cy = (int) Math.floor((float) y / (float) Chunk.CHUNK_SIZE);
-        if (cy > 0) return CellOutOfBounds.INSTANCE;
-        Chunk chunk = loadedChunks.stream()
-                .filter(c -> c.chunkX == cx && c.chunkY == cy)
-                .findFirst()
-                .orElse(newChunks.stream()
-                        .filter(c -> c.chunkX == cx && c.chunkY == cy)
-                        .findFirst()
-                        .orElse(createChunk(cx, cy)));
-        if (chunk == null)  return CellEmpty.INSTANCE;
-        return chunk.getCellAt(x, y);
+        return getLoadedChunk(cx, cy).orElse(null);
     }
 
     public boolean setCellAt(int x, int y, Cell cell) {
+        if (y >= Chunk.CHUNK_SIZE) {
+            return false;
+        }
+
         int cx = (int) Math.floor((float) x / (float) Chunk.CHUNK_SIZE);
         int cy = (int) Math.floor((float) y / (float) Chunk.CHUNK_SIZE);
-        if (cy > 0) return false;
-        Chunk chunk = loadedChunks.stream()
-                .filter(c -> c.chunkX == cx && c.chunkY == cy)
-                .findFirst()
-                .orElse(newChunks.stream()
-                        .filter(c -> c.chunkX == cx && c.chunkY == cy)
-                        .findFirst()
-                        .orElse(createChunk(cx, cy)));
+        Chunk chunk = getLoadedChunk(cx, cy).orElse(createChunk(cx, cy));
+
         if (chunk.setCellAt(x, y, cell)) {
-            chunk.root.markDirty(x, y);
-            int mx = x % Chunk.CHUNK_SIZE;
-            int my = y % Chunk.CHUNK_SIZE;
-            if (mx == 0) {
-                getLoadedChunk(cx - 1, cy).ifPresent(c -> c.root.markDirty(x, y));
-            }
-            else if (mx == Chunk.CHUNK_SIZE - 1) {
-                getLoadedChunk(cx + 1, cy).ifPresent(c -> c.root.markDirty(x, y));
-            }
-            if (my == 0) {
-                getLoadedChunk(cx, cy - 1).ifPresent(c -> c.root.markDirty(x, y));
-            }
-            else if (my == Chunk.CHUNK_SIZE - 1) {
-                getLoadedChunk(cx, cy  + 1).ifPresent(c -> c.root.markDirty(x, y));
-            }
-            if (mx == 0 && my == 0) {
-                getLoadedChunk(cx - 1, cy - 1).ifPresent(c -> c.root.markDirty(x, y));
-            }
-            else if (mx == Chunk.CHUNK_SIZE - 1 && my == 0) {
-                getLoadedChunk(cx + 1, cy - 1).ifPresent(c -> c.root.markDirty(x, y));
-            }
-            else if (mx == Chunk.CHUNK_SIZE - 1 && my == Chunk.CHUNK_SIZE - 1) {
-                getLoadedChunk(cx + 1, cy + 1).ifPresent(c -> c.root.markDirty(x, y));
-            }
-            else if (mx == 0 && my == Chunk.CHUNK_SIZE - 1) {
-                getLoadedChunk(cx - 1, cy + 1).ifPresent(c -> c.root.markDirty(x, y));
-            }
             return true;
         }
         return false;

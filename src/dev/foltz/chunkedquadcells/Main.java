@@ -1,10 +1,7 @@
 package dev.foltz.chunkedquadcells;
 
 import dev.foltz.chunkedquadcells.world.*;
-import dev.foltz.chunkedquadcells.world.cell.Cell;
-import dev.foltz.chunkedquadcells.world.cell.CellEmpty;
-import dev.foltz.chunkedquadcells.world.cell.CellSand;
-import dev.foltz.chunkedquadcells.world.cell.CellStone;
+import dev.foltz.chunkedquadcells.world.cell.*;
 import dev.foltz.chunkedquadcells.world.tile.ITile;
 import dev.foltz.chunkedquadcells.world.tile.TileQuad;
 import dev.foltz.chunkedquadcells.world.tile.TileSingle;
@@ -46,35 +43,36 @@ public class Main extends PApplet {
 
     public void renderChunk(Chunk chunk) {
         renderTile(chunk.root);
+//        for (WorldPos pos : chunk.markedForUpdate) {
+//            int x = pos.x() * CELL_SIZE;
+//            int y = pos.y() * CELL_SIZE;
+////            int cx = getCameraOffsetX();
+////            int cy = getCameraOffsetY();
+//            int xx = x;
+//            int yy = y;
+//            push();
+//            fill(255, 0, 0, 200);
+//            rect(xx, yy, CELL_SIZE, CELL_SIZE);
+//            pop();
+//        }
     }
 
     public void renderTile(ITile tile) {
-        int mx = mouseX - getCameraOffsetX();
-        int my = mouseY - getCameraOffsetY();
-        int worldX = (int) Math.floor((float) mx / (float) CELL_SIZE);
-        int worldY = (int) Math.floor((float) my / (float) CELL_SIZE);
-
         if (tile instanceof TileQuad quad) {
             boolean renderChildren = true;
 
             push();
             translate(quad.getX() * CELL_SIZE, quad.getY() * CELL_SIZE);
-            stroke(0);
-            strokeWeight(1);
             Cell cell = quad.getCellAt(quad.getX(), quad.getY());
             if (quad.isContiguous(cell.getClass())) {
+                stroke(0);
+                strokeWeight(1);
                 fill(cell.getColor());
                 renderChildren = false;
             }
             else {
                 noStroke();
                 noFill();
-            }
-            if (quad.shouldUpdate()) {
-                fill(255, 0, 0);
-            }
-            if (quad.isAdjacent(worldX, worldY)) {
-                fill(0, 255, 0);
             }
             rect(0, 0, quad.size() * CELL_SIZE, quad.size() * CELL_SIZE);
             pop();
@@ -93,12 +91,6 @@ public class Main extends PApplet {
             stroke(0);
             strokeWeight(1);
             fill(single.cell.getColor());
-            if (single.shouldUpdate()) {
-                fill(255, 0, 0);
-            }
-            if (single.isAdjacent(worldX, worldY)) {
-                fill(0, 255, 0);
-            }
             rect(0, 0, CELL_SIZE, CELL_SIZE);
             pop();
         }
@@ -120,6 +112,16 @@ public class Main extends PApplet {
 
     public int getCameraOffsetY() {
         return (height - Chunk.CHUNK_SIZE * CELL_SIZE) / 2;
+    }
+
+    public int getMouseInWorldX() {
+        int mx = mouseX - getCameraOffsetX();
+        return (int) Math.floor((float) mx / (float) CELL_SIZE);
+    }
+
+    public int getMouseInWorldY() {
+        int my = mouseY - getCameraOffsetY();
+        return (int) Math.floor((float) my / (float) CELL_SIZE);
     }
 
     @Override
