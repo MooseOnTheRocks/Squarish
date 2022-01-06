@@ -32,6 +32,10 @@ public class Main extends PApplet {
         this.surface.setResizable(true);
         this.surface.setTitle("Squarish");
 
+        initWorld();
+    }
+
+    public void initWorld() {
         world = new World();
         world.createChunk(0, 0);
         for (int i = 0; i < Chunk.CHUNK_SIZE; i++) {
@@ -188,8 +192,11 @@ public class Main extends PApplet {
     @Override
     public void keyPressed(KeyEvent event) {
         switch (event.getKey()) {
-            case 's' -> cellFactory = () -> new CellSand();
-            case ' ' -> cellFactory = () -> new CellStone();
+            case 's' -> cellFactory = CellSand::new;
+            case ' ' -> cellFactory = CellStone::new;
+            case 'd' -> cellFactory = CellDirt::new;
+            case 'w' -> cellFactory = CellWater::new;
+            case 'r' -> initWorld();
         }
     }
 
