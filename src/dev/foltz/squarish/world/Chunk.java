@@ -7,7 +7,7 @@ import dev.foltz.squarish.world.tile.TileQuad;
 import java.util.*;
 
 public class Chunk {
-    public static final int CHUNK_DEPTH = 5;
+    public static final int CHUNK_DEPTH = 6;
     public static final int CHUNK_SIZE = (int) Math.pow(2, CHUNK_DEPTH - 1);
     public final int chunkX, chunkY;
     public final ITile root;

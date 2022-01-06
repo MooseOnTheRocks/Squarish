@@ -1,0 +1,1397 @@
+Classfile /C:/Users/moose/Desktop/.projects/Squarish/out/artifacts/Squarish/dev/foltz/squarish/Main.class
+  Last modified Jan 6, 2022; size 8495 bytes
+  SHA-256 checksum b4926195f897db9eff1c730eb24bc21480b4b1d77c050743694e737b91cbcb86
+  Compiled from "Main.java"
+public class dev.foltz.squarish.Main extends processing.core.PApplet
+  minor version: 0
+  major version: 61
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #10                         // dev/foltz/squarish/Main
+  super_class: #4                         // processing/core/PApplet
+  interfaces: 0, fields: 4, methods: 19, attributes: 3
+Constant pool:
+    #1 = Class              #2            // dev/foltz/squarish/world/cell/Cell
+    #2 = Utf8               dev/foltz/squarish/world/cell/Cell
+    #3 = Methodref          #4.#5         // processing/core/PApplet."<init>":()V
+    #4 = Class              #6            // processing/core/PApplet
+    #5 = NameAndType        #7:#8         // "<init>":()V
+    #6 = Utf8               processing/core/PApplet
+    #7 = Utf8               <init>
+    #8 = Utf8               ()V
+    #9 = Fieldref           #10.#11       // dev/foltz/squarish/Main.mouseLeftPressed:Z
+   #10 = Class              #12           // dev/foltz/squarish/Main
+   #11 = NameAndType        #13:#14       // mouseLeftPressed:Z
+   #12 = Utf8               dev/foltz/squarish/Main
+   #13 = Utf8               mouseLeftPressed
+   #14 = Utf8               Z
+   #15 = Fieldref           #10.#16       // dev/foltz/squarish/Main.mouseRightPressed:Z
+   #16 = NameAndType        #17:#14       // mouseRightPressed:Z
+   #17 = Utf8               mouseRightPressed
+   #18 = InvokeDynamic      #0:#19        // #0:get:()Ljava/util/function/Supplier;
+   #19 = NameAndType        #20:#21       // get:()Ljava/util/function/Supplier;
+   #20 = Utf8               get
+   #21 = Utf8               ()Ljava/util/function/Supplier;
+   #22 = Fieldref           #10.#23       // dev/foltz/squarish/Main.cellFactory:Ljava/util/function/Supplier;
+   #23 = NameAndType        #24:#25       // cellFactory:Ljava/util/function/Supplier;
+   #24 = Utf8               cellFactory
+   #25 = Utf8               Ljava/util/function/Supplier;
+   #26 = Methodref          #10.#27       // dev/foltz/squarish/Main.size:(II)V
+   #27 = NameAndType        #28:#29       // size:(II)V
+   #28 = Utf8               size
+   #29 = Utf8               (II)V
+   #30 = Methodref          #10.#31       // dev/foltz/squarish/Main.noSmooth:()V
+   #31 = NameAndType        #32:#8        // noSmooth:()V
+   #32 = Utf8               noSmooth
+   #33 = Float              24.0f
+   #34 = Methodref          #10.#35       // dev/foltz/squarish/Main.frameRate:(F)V
+   #35 = NameAndType        #36:#37       // frameRate:(F)V
+   #36 = Utf8               frameRate
+   #37 = Utf8               (F)V
+   #38 = Fieldref           #10.#39       // dev/foltz/squarish/Main.surface:Lprocessing/core/PSurface;
+   #39 = NameAndType        #40:#41       // surface:Lprocessing/core/PSurface;
+   #40 = Utf8               surface
+   #41 = Utf8               Lprocessing/core/PSurface;
+   #42 = InterfaceMethodref #43.#44       // processing/core/PSurface.setResizable:(Z)V
+   #43 = Class              #45           // processing/core/PSurface
+   #44 = NameAndType        #46:#47       // setResizable:(Z)V
+   #45 = Utf8               processing/core/PSurface
+   #46 = Utf8               setResizable
+   #47 = Utf8               (Z)V
+   #48 = String             #49           // Squarish
+   #49 = Utf8               Squarish
+   #50 = InterfaceMethodref #43.#51       // processing/core/PSurface.setTitle:(Ljava/lang/String;)V
+   #51 = NameAndType        #52:#53       // setTitle:(Ljava/lang/String;)V
+   #52 = Utf8               setTitle
+   #53 = Utf8               (Ljava/lang/String;)V
+   #54 = Methodref          #10.#55       // dev/foltz/squarish/Main.initWorld:()V
+   #55 = NameAndType        #56:#8        // initWorld:()V
+   #56 = Utf8               initWorld
+   #57 = Class              #58           // dev/foltz/squarish/world/World
+   #58 = Utf8               dev/foltz/squarish/world/World
+   #59 = Methodref          #57.#5        // dev/foltz/squarish/world/World."<init>":()V
+   #60 = Fieldref           #10.#61       // dev/foltz/squarish/Main.world:Ldev/foltz/squarish/world/World;
+   #61 = NameAndType        #62:#63       // world:Ldev/foltz/squarish/world/World;
+   #62 = Utf8               world
+   #63 = Utf8               Ldev/foltz/squarish/world/World;
+   #64 = Methodref          #57.#65       // dev/foltz/squarish/world/World.createChunk:(II)Ldev/foltz/squarish/world/Chunk;
+   #65 = NameAndType        #66:#67       // createChunk:(II)Ldev/foltz/squarish/world/Chunk;
+   #66 = Utf8               createChunk
+   #67 = Utf8               (II)Ldev/foltz/squarish/world/Chunk;
+   #68 = Fieldref           #69.#70       // dev/foltz/squarish/world/Chunk.CHUNK_SIZE:I
+   #69 = Class              #71           // dev/foltz/squarish/world/Chunk
+   #70 = NameAndType        #72:#73       // CHUNK_SIZE:I
+   #71 = Utf8               dev/foltz/squarish/world/Chunk
+   #72 = Utf8               CHUNK_SIZE
+   #73 = Utf8               I
+   #74 = Class              #75           // dev/foltz/squarish/world/cell/CellStone
+   #75 = Utf8               dev/foltz/squarish/world/cell/CellStone
+   #76 = Methodref          #74.#5        // dev/foltz/squarish/world/cell/CellStone."<init>":()V
+   #77 = Methodref          #57.#78       // dev/foltz/squarish/world/World.setCellAt:(IILdev/foltz/squarish/world/cell/Cell;)Z
+   #78 = NameAndType        #79:#80       // setCellAt:(IILdev/foltz/squarish/world/cell/Cell;)Z
+   #79 = Utf8               setCellAt
+   #80 = Utf8               (IILdev/foltz/squarish/world/cell/Cell;)Z
+   #81 = Fieldref           #57.#82       // dev/foltz/squarish/world/World.loadedChunks:Ljava/util/Set;
+   #82 = NameAndType        #83:#84       // loadedChunks:Ljava/util/Set;
+   #83 = Utf8               loadedChunks
+   #84 = Utf8               Ljava/util/Set;
+   #85 = InterfaceMethodref #86.#87       // java/util/Set.iterator:()Ljava/util/Iterator;
+   #86 = Class              #88           // java/util/Set
+   #87 = NameAndType        #89:#90       // iterator:()Ljava/util/Iterator;
+   #88 = Utf8               java/util/Set
+   #89 = Utf8               iterator
+   #90 = Utf8               ()Ljava/util/Iterator;
+   #91 = InterfaceMethodref #92.#93       // java/util/Iterator.hasNext:()Z
+   #92 = Class              #94           // java/util/Iterator
+   #93 = NameAndType        #95:#96       // hasNext:()Z
+   #94 = Utf8               java/util/Iterator
+   #95 = Utf8               hasNext
+   #96 = Utf8               ()Z
+   #97 = InterfaceMethodref #92.#98       // java/util/Iterator.next:()Ljava/lang/Object;
+   #98 = NameAndType        #99:#100      // next:()Ljava/lang/Object;
+   #99 = Utf8               next
+  #100 = Utf8               ()Ljava/lang/Object;
+  #101 = Methodref          #10.#102      // dev/foltz/squarish/Main.renderChunk:(Ldev/foltz/squarish/world/Chunk;)V
+  #102 = NameAndType        #103:#104     // renderChunk:(Ldev/foltz/squarish/world/Chunk;)V
+  #103 = Utf8               renderChunk
+  #104 = Utf8               (Ldev/foltz/squarish/world/Chunk;)V
+  #105 = Fieldref           #69.#106      // dev/foltz/squarish/world/Chunk.root:Ldev/foltz/squarish/world/tile/ITile;
+  #106 = NameAndType        #107:#108     // root:Ldev/foltz/squarish/world/tile/ITile;
+  #107 = Utf8               root
+  #108 = Utf8               Ldev/foltz/squarish/world/tile/ITile;
+  #109 = Methodref          #10.#110      // dev/foltz/squarish/Main.renderTile:(Ldev/foltz/squarish/world/tile/ITile;)V
+  #110 = NameAndType        #111:#112     // renderTile:(Ldev/foltz/squarish/world/tile/ITile;)V
+  #111 = Utf8               renderTile
+  #112 = Utf8               (Ldev/foltz/squarish/world/tile/ITile;)V
+  #113 = Methodref          #10.#114      // dev/foltz/squarish/Main.millis:()I
+  #114 = NameAndType        #115:#116     // millis:()I
+  #115 = Utf8               millis
+  #116 = Utf8               ()I
+  #117 = Float              1.0E-4f
+  #118 = Float              0.1f
+  #119 = InvokeDynamic      #1:#120       // #1:apply:(Ldev/foltz/squarish/Main;FFF)Ljava/util/function/BiFunction;
+  #120 = NameAndType        #121:#122     // apply:(Ldev/foltz/squarish/Main;FFF)Ljava/util/function/BiFunction;
+  #121 = Utf8               apply
+  #122 = Utf8               (Ldev/foltz/squarish/Main;FFF)Ljava/util/function/BiFunction;
+  #123 = InterfaceMethodref #124.#125     // dev/foltz/squarish/world/tile/ITile.sampleNoise:(Ljava/util/function/BiFunction;)F
+  #124 = Class              #126          // dev/foltz/squarish/world/tile/ITile
+  #125 = NameAndType        #127:#128     // sampleNoise:(Ljava/util/function/BiFunction;)F
+  #126 = Utf8               dev/foltz/squarish/world/tile/ITile
+  #127 = Utf8               sampleNoise
+  #128 = Utf8               (Ljava/util/function/BiFunction;)F
+  #129 = Float              -50.0f
+  #130 = Float              50.0f
+  #131 = Methodref          #10.#132      // dev/foltz/squarish/Main.map:(FFFFF)F
+  #132 = NameAndType        #133:#134     // map:(FFFFF)F
+  #133 = Utf8               map
+  #134 = Utf8               (FFFFF)F
+  #135 = Class              #136          // dev/foltz/squarish/world/tile/TileQuad
+  #136 = Utf8               dev/foltz/squarish/world/tile/TileQuad
+  #137 = Methodref          #10.#138      // dev/foltz/squarish/Main.push:()V
+  #138 = NameAndType        #139:#8       // push:()V
+  #139 = Utf8               push
+  #140 = Methodref          #135.#141     // dev/foltz/squarish/world/tile/TileQuad.getX:()I
+  #141 = NameAndType        #142:#116     // getX:()I
+  #142 = Utf8               getX
+  #143 = Methodref          #135.#144     // dev/foltz/squarish/world/tile/TileQuad.getY:()I
+  #144 = NameAndType        #145:#116     // getY:()I
+  #145 = Utf8               getY
+  #146 = Methodref          #10.#147      // dev/foltz/squarish/Main.translate:(FF)V
+  #147 = NameAndType        #148:#149     // translate:(FF)V
+  #148 = Utf8               translate
+  #149 = Utf8               (FF)V
+  #150 = Methodref          #135.#151     // dev/foltz/squarish/world/tile/TileQuad.getCellAt:(II)Ldev/foltz/squarish/world/cell/Cell;
+  #151 = NameAndType        #152:#153     // getCellAt:(II)Ldev/foltz/squarish/world/cell/Cell;
+  #152 = Utf8               getCellAt
+  #153 = Utf8               (II)Ldev/foltz/squarish/world/cell/Cell;
+  #154 = Methodref          #1.#155       // dev/foltz/squarish/world/cell/Cell.getColor:()I
+  #155 = NameAndType        #156:#116     // getColor:()I
+  #156 = Utf8               getColor
+  #157 = Methodref          #10.#158      // dev/foltz/squarish/Main.stroke:(I)V
+  #158 = NameAndType        #159:#160     // stroke:(I)V
+  #159 = Utf8               stroke
+  #160 = Utf8               (I)V
+  #161 = Methodref          #10.#162      // dev/foltz/squarish/Main.strokeWeight:(F)V
+  #162 = NameAndType        #163:#37      // strokeWeight:(F)V
+  #163 = Utf8               strokeWeight
+  #164 = Methodref          #165.#166     // java/lang/Object.getClass:()Ljava/lang/Class;
+  #165 = Class              #167          // java/lang/Object
+  #166 = NameAndType        #168:#169     // getClass:()Ljava/lang/Class;
+  #167 = Utf8               java/lang/Object
+  #168 = Utf8               getClass
+  #169 = Utf8               ()Ljava/lang/Class;
+  #170 = Methodref          #135.#171     // dev/foltz/squarish/world/tile/TileQuad.isContiguous:(Ljava/lang/Class;)Z
+  #171 = NameAndType        #172:#173     // isContiguous:(Ljava/lang/Class;)Z
+  #172 = Utf8               isContiguous
+  #173 = Utf8               (Ljava/lang/Class;)Z
+  #174 = Methodref          #10.#175      // dev/foltz/squarish/Main.red:(I)F
+  #175 = NameAndType        #176:#177     // red:(I)F
+  #176 = Utf8               red
+  #177 = Utf8               (I)F
+  #178 = Methodref          #10.#179      // dev/foltz/squarish/Main.green:(I)F
+  #179 = NameAndType        #180:#177     // green:(I)F
+  #180 = Utf8               green
+  #181 = Methodref          #10.#182      // dev/foltz/squarish/Main.blue:(I)F
+  #182 = NameAndType        #183:#177     // blue:(I)F
+  #183 = Utf8               blue
+  #184 = Methodref          #10.#185      // dev/foltz/squarish/Main.fill:(FFF)V
+  #185 = NameAndType        #186:#187     // fill:(FFF)V
+  #186 = Utf8               fill
+  #187 = Utf8               (FFF)V
+  #188 = Methodref          #10.#189      // dev/foltz/squarish/Main.noStroke:()V
+  #189 = NameAndType        #190:#8       // noStroke:()V
+  #190 = Utf8               noStroke
+  #191 = Methodref          #10.#192      // dev/foltz/squarish/Main.noFill:()V
+  #192 = NameAndType        #193:#8       // noFill:()V
+  #193 = Utf8               noFill
+  #194 = Methodref          #135.#195     // dev/foltz/squarish/world/tile/TileQuad.size:()I
+  #195 = NameAndType        #28:#116      // size:()I
+  #196 = Methodref          #10.#197      // dev/foltz/squarish/Main.rect:(FFFF)V
+  #197 = NameAndType        #198:#199     // rect:(FFFF)V
+  #198 = Utf8               rect
+  #199 = Utf8               (FFFF)V
+  #200 = Methodref          #10.#201      // dev/foltz/squarish/Main.pop:()V
+  #201 = NameAndType        #202:#8       // pop:()V
+  #202 = Utf8               pop
+  #203 = Fieldref           #135.#204     // dev/foltz/squarish/world/tile/TileQuad.children:[Ldev/foltz/squarish/world/tile/ITile;
+  #204 = NameAndType        #205:#206     // children:[Ldev/foltz/squarish/world/tile/ITile;
+  #205 = Utf8               children
+  #206 = Utf8               [Ldev/foltz/squarish/world/tile/ITile;
+  #207 = Class              #208          // dev/foltz/squarish/world/tile/TileSingle
+  #208 = Utf8               dev/foltz/squarish/world/tile/TileSingle
+  #209 = Methodref          #207.#141     // dev/foltz/squarish/world/tile/TileSingle.getX:()I
+  #210 = Methodref          #207.#144     // dev/foltz/squarish/world/tile/TileSingle.getY:()I
+  #211 = Fieldref           #207.#212     // dev/foltz/squarish/world/tile/TileSingle.cell:Ldev/foltz/squarish/world/cell/Cell;
+  #212 = NameAndType        #213:#214     // cell:Ldev/foltz/squarish/world/cell/Cell;
+  #213 = Utf8               cell
+  #214 = Utf8               Ldev/foltz/squarish/world/cell/Cell;
+  #215 = Float              8.0f
+  #216 = Methodref          #10.#217      // dev/foltz/squarish/Main.fill:(I)V
+  #217 = NameAndType        #186:#160     // fill:(I)V
+  #218 = Float              16.0f
+  #219 = Methodref          #10.#220      // dev/foltz/squarish/Main.textSize:(F)V
+  #220 = NameAndType        #221:#37      // textSize:(F)V
+  #221 = Utf8               textSize
+  #222 = Fieldref           #10.#223      // dev/foltz/squarish/Main.frameRate:F
+  #223 = NameAndType        #36:#224      // frameRate:F
+  #224 = Utf8               F
+  #225 = InvokeDynamic      #2:#226       // #2:makeConcatWithConstants:(F)Ljava/lang/String;
+  #226 = NameAndType        #227:#228     // makeConcatWithConstants:(F)Ljava/lang/String;
+  #227 = Utf8               makeConcatWithConstants
+  #228 = Utf8               (F)Ljava/lang/String;
+  #229 = Methodref          #10.#230      // dev/foltz/squarish/Main.text:(Ljava/lang/String;FF)V
+  #230 = NameAndType        #231:#232     // text:(Ljava/lang/String;FF)V
+  #231 = Utf8               text
+  #232 = Utf8               (Ljava/lang/String;FF)V
+  #233 = Fieldref           #57.#234      // dev/foltz/squarish/world/World.chunkUpdates:I
+  #234 = NameAndType        #235:#73      // chunkUpdates:I
+  #235 = Utf8               chunkUpdates
+  #236 = InvokeDynamic      #3:#237       // #3:makeConcatWithConstants:(I)Ljava/lang/String;
+  #237 = NameAndType        #227:#238     // makeConcatWithConstants:(I)Ljava/lang/String;
+  #238 = Utf8               (I)Ljava/lang/String;
+  #239 = Float              40.0f
+  #240 = Fieldref           #57.#241      // dev/foltz/squarish/world/World.cellUpdates:I
+  #241 = NameAndType        #242:#73      // cellUpdates:I
+  #242 = Utf8               cellUpdates
+  #243 = InvokeDynamic      #4:#237       // #4:makeConcatWithConstants:(I)Ljava/lang/String;
+  #244 = Float              56.0f
+  #245 = Fieldref           #10.#246      // dev/foltz/squarish/Main.width:I
+  #246 = NameAndType        #247:#73      // width:I
+  #247 = Utf8               width
+  #248 = Fieldref           #10.#249      // dev/foltz/squarish/Main.height:I
+  #249 = NameAndType        #250:#73      // height:I
+  #250 = Utf8               height
+  #251 = Fieldref           #10.#252      // dev/foltz/squarish/Main.mouseX:I
+  #252 = NameAndType        #253:#73      // mouseX:I
+  #253 = Utf8               mouseX
+  #254 = Methodref          #10.#255      // dev/foltz/squarish/Main.getCameraOffsetX:()I
+  #255 = NameAndType        #256:#116     // getCameraOffsetX:()I
+  #256 = Utf8               getCameraOffsetX
+  #257 = Methodref          #258.#259     // java/lang/Math.floor:(D)D
+  #258 = Class              #260          // java/lang/Math
+  #259 = NameAndType        #261:#262     // floor:(D)D
+  #260 = Utf8               java/lang/Math
+  #261 = Utf8               floor
+  #262 = Utf8               (D)D
+  #263 = Fieldref           #10.#264      // dev/foltz/squarish/Main.mouseY:I
+  #264 = NameAndType        #265:#73      // mouseY:I
+  #265 = Utf8               mouseY
+  #266 = Methodref          #10.#267      // dev/foltz/squarish/Main.getCameraOffsetY:()I
+  #267 = NameAndType        #268:#116     // getCameraOffsetY:()I
+  #268 = Utf8               getCameraOffsetY
+  #269 = Methodref          #10.#270      // dev/foltz/squarish/Main.getMouseInWorldX:()I
+  #270 = NameAndType        #271:#116     // getMouseInWorldX:()I
+  #271 = Utf8               getMouseInWorldX
+  #272 = Methodref          #10.#273      // dev/foltz/squarish/Main.getMouseInWorldY:()I
+  #273 = NameAndType        #274:#116     // getMouseInWorldY:()I
+  #274 = Utf8               getMouseInWorldY
+  #275 = Fieldref           #276.#277     // dev/foltz/squarish/world/cell/CellEmpty.INSTANCE:Ldev/foltz/squarish/world/cell/CellEmpty;
+  #276 = Class              #278          // dev/foltz/squarish/world/cell/CellEmpty
+  #277 = NameAndType        #279:#280     // INSTANCE:Ldev/foltz/squarish/world/cell/CellEmpty;
+  #278 = Utf8               dev/foltz/squarish/world/cell/CellEmpty
+  #279 = Utf8               INSTANCE
+  #280 = Utf8               Ldev/foltz/squarish/world/cell/CellEmpty;
+  #281 = InterfaceMethodref #282.#283     // java/util/function/Supplier.get:()Ljava/lang/Object;
+  #282 = Class              #284          // java/util/function/Supplier
+  #283 = NameAndType        #20:#100      // get:()Ljava/lang/Object;
+  #284 = Utf8               java/util/function/Supplier
+  #285 = Methodref          #57.#286      // dev/foltz/squarish/world/World.update:()V
+  #286 = NameAndType        #287:#8       // update:()V
+  #287 = Utf8               update
+  #288 = Methodref          #10.#289      // dev/foltz/squarish/Main.background:(I)V
+  #289 = NameAndType        #290:#160     // background:(I)V
+  #290 = Utf8               background
+  #291 = Methodref          #10.#292      // dev/foltz/squarish/Main.renderWorld:(Ldev/foltz/squarish/world/World;)V
+  #292 = NameAndType        #293:#294     // renderWorld:(Ldev/foltz/squarish/world/World;)V
+  #293 = Utf8               renderWorld
+  #294 = Utf8               (Ldev/foltz/squarish/world/World;)V
+  #295 = Methodref          #10.#296      // dev/foltz/squarish/Main.renderGUI:()V
+  #296 = NameAndType        #297:#8       // renderGUI:()V
+  #297 = Utf8               renderGUI
+  #298 = Methodref          #299.#300     // processing/event/MouseEvent.getButton:()I
+  #299 = Class              #301          // processing/event/MouseEvent
+  #300 = NameAndType        #302:#116     // getButton:()I
+  #301 = Utf8               processing/event/MouseEvent
+  #302 = Utf8               getButton
+  #303 = Methodref          #304.#305     // processing/event/KeyEvent.getKey:()C
+  #304 = Class              #306          // processing/event/KeyEvent
+  #305 = NameAndType        #307:#308     // getKey:()C
+  #306 = Utf8               processing/event/KeyEvent
+  #307 = Utf8               getKey
+  #308 = Utf8               ()C
+  #309 = InvokeDynamic      #5:#19        // #5:get:()Ljava/util/function/Supplier;
+  #310 = InvokeDynamic      #6:#19        // #6:get:()Ljava/util/function/Supplier;
+  #311 = InvokeDynamic      #7:#19        // #7:get:()Ljava/util/function/Supplier;
+  #312 = Class              #313          // java/lang/String
+  #313 = Utf8               java/lang/String
+  #314 = Methodref          #4.#315       // processing/core/PApplet.main:(Ljava/lang/Class;[Ljava/lang/String;)V
+  #315 = NameAndType        #316:#317     // main:(Ljava/lang/Class;[Ljava/lang/String;)V
+  #316 = Utf8               main
+  #317 = Utf8               (Ljava/lang/Class;[Ljava/lang/String;)V
+  #318 = Methodref          #319.#320     // java/lang/Float.floatValue:()F
+  #319 = Class              #321          // java/lang/Float
+  #320 = NameAndType        #322:#323     // floatValue:()F
+  #321 = Utf8               java/lang/Float
+  #322 = Utf8               floatValue
+  #323 = Utf8               ()F
+  #324 = Methodref          #10.#325      // dev/foltz/squarish/Main.noise:(FFF)F
+  #325 = NameAndType        #326:#327     // noise:(FFF)F
+  #326 = Utf8               noise
+  #327 = Utf8               (FFF)F
+  #328 = Methodref          #319.#329     // java/lang/Float.valueOf:(F)Ljava/lang/Float;
+  #329 = NameAndType        #330:#331     // valueOf:(F)Ljava/lang/Float;
+  #330 = Utf8               valueOf
+  #331 = Utf8               (F)Ljava/lang/Float;
+  #332 = Utf8               Signature
+  #333 = Utf8               Ljava/util/function/Supplier<Ldev/foltz/squarish/world/cell/Cell;>;
+  #334 = Utf8               Code
+  #335 = Utf8               LineNumberTable
+  #336 = Utf8               LocalVariableTable
+  #337 = Utf8               this
+  #338 = Utf8               Ldev/foltz/squarish/Main;
+  #339 = Utf8               settings
+  #340 = Utf8               setup
+  #341 = Utf8               i
+  #342 = Utf8               StackMapTable
+  #343 = Utf8               chunk
+  #344 = Utf8               Ldev/foltz/squarish/world/Chunk;
+  #345 = Utf8               r
+  #346 = Utf8               g
+  #347 = Utf8               b
+  #348 = Utf8               child
+  #349 = Utf8               renderChildren
+  #350 = Utf8               quad
+  #351 = Utf8               Ldev/foltz/squarish/world/tile/TileQuad;
+  #352 = Utf8               single
+  #353 = Utf8               Ldev/foltz/squarish/world/tile/TileSingle;
+  #354 = Utf8               tile
+  #355 = Utf8               offset
+  #356 = Utf8               scaleX
+  #357 = Utf8               scaleY
+  #358 = Utf8               nval
+  #359 = Class              #206          // "[Ldev/foltz/squarish/world/tile/ITile;"
+  #360 = Utf8               mx
+  #361 = Utf8               my
+  #362 = Utf8               draw
+  #363 = Utf8               cameraOffsetX
+  #364 = Utf8               cameraOffsetY
+  #365 = Utf8               mousePressed
+  #366 = Utf8               (Lprocessing/event/MouseEvent;)V
+  #367 = Utf8               event
+  #368 = Utf8               Lprocessing/event/MouseEvent;
+  #369 = Utf8               mouseReleased
+  #370 = Utf8               keyPressed
+  #371 = Utf8               (Lprocessing/event/KeyEvent;)V
+  #372 = Utf8               Lprocessing/event/KeyEvent;
+  #373 = Utf8               keyReleased
+  #374 = Utf8               ([Ljava/lang/String;)V
+  #375 = Utf8               args
+  #376 = Utf8               [Ljava/lang/String;
+  #377 = Utf8               lambda$renderTile$0
+  #378 = Utf8               (FFFLjava/lang/Float;Ljava/lang/Float;)Ljava/lang/Float;
+  #379 = Utf8               x
+  #380 = Utf8               Ljava/lang/Float;
+  #381 = Utf8               y
+  #382 = Utf8               SourceFile
+  #383 = Utf8               Main.java
+  #384 = Utf8               BootstrapMethods
+  #385 = MethodHandle       6:#386        // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #386 = Methodref          #387.#388     // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #387 = Class              #389          // java/lang/invoke/LambdaMetafactory
+  #388 = NameAndType        #390:#391     // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #389 = Utf8               java/lang/invoke/LambdaMetafactory
+  #390 = Utf8               metafactory
+  #391 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #392 = MethodType         #100          //  ()Ljava/lang/Object;
+  #393 = MethodHandle       8:#394        // REF_newInvokeSpecial dev/foltz/squarish/world/cell/CellSand."<init>":()V
+  #394 = Methodref          #395.#5       // dev/foltz/squarish/world/cell/CellSand."<init>":()V
+  #395 = Class              #396          // dev/foltz/squarish/world/cell/CellSand
+  #396 = Utf8               dev/foltz/squarish/world/cell/CellSand
+  #397 = MethodType         #398          //  ()Ldev/foltz/squarish/world/cell/Cell;
+  #398 = Utf8               ()Ldev/foltz/squarish/world/cell/Cell;
+  #399 = MethodType         #400          //  (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #400 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  #401 = MethodHandle       5:#402        // REF_invokeVirtual dev/foltz/squarish/Main.lambda$renderTile$0:(FFFLjava/lang/Float;Ljava/lang/Float;)Ljava/lang/Float;
+  #402 = Methodref          #10.#403      // dev/foltz/squarish/Main.lambda$renderTile$0:(FFFLjava/lang/Float;Ljava/lang/Float;)Ljava/lang/Float;
+  #403 = NameAndType        #377:#378     // lambda$renderTile$0:(FFFLjava/lang/Float;Ljava/lang/Float;)Ljava/lang/Float;
+  #404 = MethodType         #405          //  (Ljava/lang/Float;Ljava/lang/Float;)Ljava/lang/Float;
+  #405 = Utf8               (Ljava/lang/Float;Ljava/lang/Float;)Ljava/lang/Float;
+  #406 = MethodHandle       6:#407        // REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #407 = Methodref          #408.#409     // java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #408 = Class              #410          // java/lang/invoke/StringConcatFactory
+  #409 = NameAndType        #227:#411     // makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #410 = Utf8               java/lang/invoke/StringConcatFactory
+  #411 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+  #412 = String             #413          // FPS: \u0001
+  #413 = Utf8               FPS: \u0001
+  #414 = String             #415          // Chunk updates: \u0001
+  #415 = Utf8               Chunk updates: \u0001
+  #416 = String             #417          // Cell updates: \u0001
+  #417 = Utf8               Cell updates: \u0001
+  #418 = MethodHandle       8:#76         // REF_newInvokeSpecial dev/foltz/squarish/world/cell/CellStone."<init>":()V
+  #419 = MethodHandle       8:#420        // REF_newInvokeSpecial dev/foltz/squarish/world/cell/CellDirt."<init>":()V
+  #420 = Methodref          #421.#5       // dev/foltz/squarish/world/cell/CellDirt."<init>":()V
+  #421 = Class              #422          // dev/foltz/squarish/world/cell/CellDirt
+  #422 = Utf8               dev/foltz/squarish/world/cell/CellDirt
+  #423 = MethodHandle       8:#424        // REF_newInvokeSpecial dev/foltz/squarish/world/cell/CellWater."<init>":()V
+  #424 = Methodref          #425.#5       // dev/foltz/squarish/world/cell/CellWater."<init>":()V
+  #425 = Class              #426          // dev/foltz/squarish/world/cell/CellWater
+  #426 = Utf8               dev/foltz/squarish/world/cell/CellWater
+  #427 = Utf8               InnerClasses
+  #428 = Class              #429          // java/lang/invoke/MethodHandles$Lookup
+  #429 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #430 = Class              #431          // java/lang/invoke/MethodHandles
+  #431 = Utf8               java/lang/invoke/MethodHandles
+  #432 = Utf8               Lookup
+{
+  public static dev.foltz.squarish.world.World world;
+    descriptor: Ldev/foltz/squarish/world/World;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+
+  public boolean mouseLeftPressed;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public boolean mouseRightPressed;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public java.util.function.Supplier<dev.foltz.squarish.world.cell.Cell> cellFactory;
+    descriptor: Ljava/util/function/Supplier;
+    flags: (0x0001) ACC_PUBLIC
+    Signature: #333                         // Ljava/util/function/Supplier<Ldev/foltz/squarish/world/cell/Cell;>;
+
+  public dev.foltz.squarish.Main();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #3                  // Method processing/core/PApplet."<init>":()V
+         4: aload_0
+         5: iconst_0
+         6: putfield      #9                  // Field mouseLeftPressed:Z
+         9: aload_0
+        10: iconst_0
+        11: putfield      #15                 // Field mouseRightPressed:Z
+        14: aload_0
+        15: invokedynamic #18,  0             // InvokeDynamic #0:get:()Ljava/util/function/Supplier;
+        20: putfield      #22                 // Field cellFactory:Ljava/util/function/Supplier;
+        23: return
+      LineNumberTable:
+        line 17: 0
+        line 19: 4
+        line 20: 9
+        line 21: 14
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      24     0  this   Ldev/foltz/squarish/Main;
+
+  public void settings();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: sipush        500
+         4: sipush        500
+         7: invokevirtual #26                 // Method size:(II)V
+        10: aload_0
+        11: invokevirtual #30                 // Method noSmooth:()V
+        14: return
+      LineNumberTable:
+        line 25: 0
+        line 26: 10
+        line 27: 14
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      15     0  this   Ldev/foltz/squarish/Main;
+
+  public void setup();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: ldc           #33                 // float 24.0f
+         3: invokevirtual #34                 // Method frameRate:(F)V
+         6: aload_0
+         7: getfield      #38                 // Field surface:Lprocessing/core/PSurface;
+        10: iconst_1
+        11: invokeinterface #42,  2           // InterfaceMethod processing/core/PSurface.setResizable:(Z)V
+        16: aload_0
+        17: getfield      #38                 // Field surface:Lprocessing/core/PSurface;
+        20: ldc           #48                 // String Squarish
+        22: invokeinterface #50,  2           // InterfaceMethod processing/core/PSurface.setTitle:(Ljava/lang/String;)V
+        27: aload_0
+        28: invokevirtual #54                 // Method initWorld:()V
+        31: return
+      LineNumberTable:
+        line 31: 0
+        line 32: 6
+        line 33: 16
+        line 35: 27
+        line 36: 31
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      32     0  this   Ldev/foltz/squarish/Main;
+
+  public void initWorld();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=5, locals=2, args_size=1
+         0: new           #57                 // class dev/foltz/squarish/world/World
+         3: dup
+         4: invokespecial #59                 // Method dev/foltz/squarish/world/World."<init>":()V
+         7: putstatic     #60                 // Field world:Ldev/foltz/squarish/world/World;
+        10: getstatic     #60                 // Field world:Ldev/foltz/squarish/world/World;
+        13: iconst_0
+        14: iconst_0
+        15: invokevirtual #64                 // Method dev/foltz/squarish/world/World.createChunk:(II)Ldev/foltz/squarish/world/Chunk;
+        18: pop
+        19: iconst_0
+        20: istore_1
+        21: iload_1
+        22: getstatic     #68                 // Field dev/foltz/squarish/world/Chunk.CHUNK_SIZE:I
+        25: if_icmpge     54
+        28: getstatic     #60                 // Field world:Ldev/foltz/squarish/world/World;
+        31: iload_1
+        32: getstatic     #68                 // Field dev/foltz/squarish/world/Chunk.CHUNK_SIZE:I
+        35: iconst_1
+        36: isub
+        37: new           #74                 // class dev/foltz/squarish/world/cell/CellStone
+        40: dup
+        41: invokespecial #76                 // Method dev/foltz/squarish/world/cell/CellStone."<init>":()V
+        44: invokevirtual #77                 // Method dev/foltz/squarish/world/World.setCellAt:(IILdev/foltz/squarish/world/cell/Cell;)Z
+        47: pop
+        48: iinc          1, 1
+        51: goto          21
+        54: return
+      LineNumberTable:
+        line 39: 0
+        line 40: 10
+        line 41: 19
+        line 42: 28
+        line 41: 48
+        line 44: 54
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           21      33     1     i   I
+            0      55     0  this   Ldev/foltz/squarish/Main;
+      StackMapTable: number_of_entries = 2
+        frame_type = 252 /* append */
+          offset_delta = 21
+          locals = [ int ]
+        frame_type = 250 /* chop */
+          offset_delta = 32
+
+  public void renderWorld(dev.foltz.squarish.world.World);
+    descriptor: (Ldev/foltz/squarish/world/World;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=4, args_size=2
+         0: aload_1
+         1: getfield      #81                 // Field dev/foltz/squarish/world/World.loadedChunks:Ljava/util/Set;
+         4: invokeinterface #85,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+         9: astore_2
+        10: aload_2
+        11: invokeinterface #91,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        16: ifeq          37
+        19: aload_2
+        20: invokeinterface #97,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+        25: checkcast     #69                 // class dev/foltz/squarish/world/Chunk
+        28: astore_3
+        29: aload_0
+        30: aload_3
+        31: invokevirtual #101                // Method renderChunk:(Ldev/foltz/squarish/world/Chunk;)V
+        34: goto          10
+        37: return
+      LineNumberTable:
+        line 47: 0
+        line 48: 29
+        line 49: 34
+        line 50: 37
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           29       5     3 chunk   Ldev/foltz/squarish/world/Chunk;
+            0      38     0  this   Ldev/foltz/squarish/Main;
+            0      38     1 world   Ldev/foltz/squarish/world/World;
+      StackMapTable: number_of_entries = 2
+        frame_type = 252 /* append */
+          offset_delta = 10
+          locals = [ class java/util/Iterator ]
+        frame_type = 250 /* chop */
+          offset_delta = 26
+
+  public void renderChunk(dev.foltz.squarish.world.Chunk);
+    descriptor: (Ldev/foltz/squarish/world/Chunk;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0
+         1: aload_1
+         2: getfield      #105                // Field dev/foltz/squarish/world/Chunk.root:Ldev/foltz/squarish/world/tile/ITile;
+         5: invokevirtual #109                // Method renderTile:(Ldev/foltz/squarish/world/tile/ITile;)V
+         8: return
+      LineNumberTable:
+        line 53: 0
+        line 66: 8
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       9     0  this   Ldev/foltz/squarish/Main;
+            0       9     1 chunk   Ldev/foltz/squarish/world/Chunk;
+
+  public void renderTile(dev.foltz.squarish.world.tile.ITile);
+    descriptor: (Ldev/foltz/squarish/world/tile/ITile;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=6, locals=14, args_size=2
+         0: aload_0
+         1: invokevirtual #113                // Method millis:()I
+         4: i2f
+         5: ldc           #117                // float 1.0E-4f
+         7: fmul
+         8: fstore_2
+         9: ldc           #118                // float 0.1f
+        11: fstore_3
+        12: ldc           #118                // float 0.1f
+        14: fstore        4
+        16: aload_1
+        17: aload_0
+        18: fload_3
+        19: fload         4
+        21: fload_2
+        22: invokedynamic #119,  0            // InvokeDynamic #1:apply:(Ldev/foltz/squarish/Main;FFF)Ljava/util/function/BiFunction;
+        27: invokeinterface #123,  2          // InterfaceMethod dev/foltz/squarish/world/tile/ITile.sampleNoise:(Ljava/util/function/BiFunction;)F
+        32: fconst_0
+        33: fconst_1
+        34: ldc           #129                // float -50.0f
+        36: ldc           #130                // float 50.0f
+        38: invokestatic  #131                // Method map:(FFFFF)F
+        41: f2i
+        42: istore        5
+        44: aload_1
+        45: instanceof    #135                // class dev/foltz/squarish/world/tile/TileQuad
+        48: ifeq          284
+        51: aload_1
+        52: checkcast     #135                // class dev/foltz/squarish/world/tile/TileQuad
+        55: astore        6
+        57: iconst_1
+        58: istore        8
+        60: aload_0
+        61: invokevirtual #137                // Method push:()V
+        64: aload_0
+        65: aload         6
+        67: invokevirtual #140                // Method dev/foltz/squarish/world/tile/TileQuad.getX:()I
+        70: bipush        8
+        72: imul
+        73: i2f
+        74: aload         6
+        76: invokevirtual #143                // Method dev/foltz/squarish/world/tile/TileQuad.getY:()I
+        79: bipush        8
+        81: imul
+        82: i2f
+        83: invokevirtual #146                // Method translate:(FF)V
+        86: aload         6
+        88: aload         6
+        90: invokevirtual #140                // Method dev/foltz/squarish/world/tile/TileQuad.getX:()I
+        93: aload         6
+        95: invokevirtual #143                // Method dev/foltz/squarish/world/tile/TileQuad.getY:()I
+        98: invokevirtual #150                // Method dev/foltz/squarish/world/tile/TileQuad.getCellAt:(II)Ldev/foltz/squarish/world/cell/Cell;
+       101: astore        9
+       103: aload_0
+       104: aload         9
+       106: invokevirtual #154                // Method dev/foltz/squarish/world/cell/Cell.getColor:()I
+       109: invokevirtual #157                // Method stroke:(I)V
+       112: aload_0
+       113: fconst_1
+       114: invokevirtual #161                // Method strokeWeight:(F)V
+       117: aload         6
+       119: aload         9
+       121: invokevirtual #164                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+       124: invokevirtual #170                // Method dev/foltz/squarish/world/tile/TileQuad.isContiguous:(Ljava/lang/Class;)Z
+       127: ifeq          194
+       130: aload_0
+       131: aload         9
+       133: invokevirtual #154                // Method dev/foltz/squarish/world/cell/Cell.getColor:()I
+       136: invokevirtual #174                // Method red:(I)F
+       139: f2i
+       140: istore        10
+       142: aload_0
+       143: aload         9
+       145: invokevirtual #154                // Method dev/foltz/squarish/world/cell/Cell.getColor:()I
+       148: invokevirtual #178                // Method green:(I)F
+       151: f2i
+       152: istore        11
+       154: aload_0
+       155: aload         9
+       157: invokevirtual #154                // Method dev/foltz/squarish/world/cell/Cell.getColor:()I
+       160: invokevirtual #181                // Method blue:(I)F
+       163: f2i
+       164: istore        12
+       166: aload_0
+       167: iload         10
+       169: iload         5
+       171: iadd
+       172: i2f
+       173: iload         11
+       175: iload         5
+       177: iadd
+       178: i2f
+       179: iload         12
+       181: iload         5
+       183: iadd
+       184: i2f
+       185: invokevirtual #184                // Method fill:(FFF)V
+       188: iconst_0
+       189: istore        8
+       191: goto          202
+       194: aload_0
+       195: invokevirtual #188                // Method noStroke:()V
+       198: aload_0
+       199: invokevirtual #191                // Method noFill:()V
+       202: aload_0
+       203: fconst_0
+       204: fconst_0
+       205: aload         6
+       207: invokevirtual #194                // Method dev/foltz/squarish/world/tile/TileQuad.size:()I
+       210: bipush        8
+       212: imul
+       213: i2f
+       214: aload         6
+       216: invokevirtual #194                // Method dev/foltz/squarish/world/tile/TileQuad.size:()I
+       219: bipush        8
+       221: imul
+       222: i2f
+       223: invokevirtual #196                // Method rect:(FFFF)V
+       226: aload_0
+       227: invokevirtual #200                // Method pop:()V
+       230: iload         8
+       232: ifeq          281
+       235: aload         6
+       237: getfield      #203                // Field dev/foltz/squarish/world/tile/TileQuad.children:[Ldev/foltz/squarish/world/tile/ITile;
+       240: astore        10
+       242: aload         10
+       244: arraylength
+       245: istore        11
+       247: iconst_0
+       248: istore        12
+       250: iload         12
+       252: iload         11
+       254: if_icmpge     281
+       257: aload         10
+       259: iload         12
+       261: aaload
+       262: astore        13
+       264: aload         13
+       266: ifnull        275
+       269: aload_0
+       270: aload         13
+       272: invokevirtual #109                // Method renderTile:(Ldev/foltz/squarish/world/tile/ITile;)V
+       275: iinc          12, 1
+       278: goto          250
+       281: goto          421
+       284: aload_1
+       285: instanceof    #207                // class dev/foltz/squarish/world/tile/TileSingle
+       288: ifeq          421
+       291: aload_1
+       292: checkcast     #207                // class dev/foltz/squarish/world/tile/TileSingle
+       295: astore        7
+       297: aload_0
+       298: invokevirtual #137                // Method push:()V
+       301: aload_0
+       302: aload         7
+       304: invokevirtual #209                // Method dev/foltz/squarish/world/tile/TileSingle.getX:()I
+       307: bipush        8
+       309: imul
+       310: i2f
+       311: aload         7
+       313: invokevirtual #210                // Method dev/foltz/squarish/world/tile/TileSingle.getY:()I
+       316: bipush        8
+       318: imul
+       319: i2f
+       320: invokevirtual #146                // Method translate:(FF)V
+       323: aload_0
+       324: aload         7
+       326: getfield      #211                // Field dev/foltz/squarish/world/tile/TileSingle.cell:Ldev/foltz/squarish/world/cell/Cell;
+       329: invokevirtual #154                // Method dev/foltz/squarish/world/cell/Cell.getColor:()I
+       332: invokevirtual #157                // Method stroke:(I)V
+       335: aload_0
+       336: fconst_1
+       337: invokevirtual #161                // Method strokeWeight:(F)V
+       340: aload_0
+       341: aload         7
+       343: getfield      #211                // Field dev/foltz/squarish/world/tile/TileSingle.cell:Ldev/foltz/squarish/world/cell/Cell;
+       346: invokevirtual #154                // Method dev/foltz/squarish/world/cell/Cell.getColor:()I
+       349: invokevirtual #174                // Method red:(I)F
+       352: f2i
+       353: istore        8
+       355: aload_0
+       356: aload         7
+       358: getfield      #211                // Field dev/foltz/squarish/world/tile/TileSingle.cell:Ldev/foltz/squarish/world/cell/Cell;
+       361: invokevirtual #154                // Method dev/foltz/squarish/world/cell/Cell.getColor:()I
+       364: invokevirtual #178                // Method green:(I)F
+       367: f2i
+       368: istore        9
+       370: aload_0
+       371: aload         7
+       373: getfield      #211                // Field dev/foltz/squarish/world/tile/TileSingle.cell:Ldev/foltz/squarish/world/cell/Cell;
+       376: invokevirtual #154                // Method dev/foltz/squarish/world/cell/Cell.getColor:()I
+       379: invokevirtual #181                // Method blue:(I)F
+       382: f2i
+       383: istore        10
+       385: aload_0
+       386: iload         8
+       388: iload         5
+       390: iadd
+       391: i2f
+       392: iload         9
+       394: iload         5
+       396: iadd
+       397: i2f
+       398: iload         10
+       400: iload         5
+       402: iadd
+       403: i2f
+       404: invokevirtual #184                // Method fill:(FFF)V
+       407: aload_0
+       408: fconst_0
+       409: fconst_0
+       410: ldc           #215                // float 8.0f
+       412: ldc           #215                // float 8.0f
+       414: invokevirtual #196                // Method rect:(FFFF)V
+       417: aload_0
+       418: invokevirtual #200                // Method pop:()V
+       421: return
+      LineNumberTable:
+        line 69: 0
+        line 70: 9
+        line 71: 12
+        line 72: 16
+        line 74: 44
+        line 75: 57
+        line 77: 60
+        line 78: 64
+        line 79: 86
+        line 80: 103
+        line 81: 112
+        line 82: 117
+        line 83: 130
+        line 84: 142
+        line 85: 154
+        line 86: 166
+        line 87: 188
+        line 88: 191
+        line 90: 194
+        line 91: 198
+        line 94: 202
+        line 95: 226
+        line 97: 230
+        line 98: 235
+        line 99: 264
+        line 100: 269
+        line 98: 275
+        line 104: 281
+        line 105: 284
+        line 106: 297
+        line 107: 301
+        line 108: 323
+        line 109: 335
+        line 110: 340
+        line 111: 355
+        line 112: 370
+        line 113: 385
+        line 115: 407
+        line 116: 417
+        line 118: 421
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+          142      49    10     r   I
+          154      37    11     g   I
+          166      25    12     b   I
+          264      11    13 child   Ldev/foltz/squarish/world/tile/ITile;
+           60     221     8 renderChildren   Z
+          103     178     9  cell   Ldev/foltz/squarish/world/cell/Cell;
+           57     227     6  quad   Ldev/foltz/squarish/world/tile/TileQuad;
+          355      66     8     r   I
+          370      51     9     g   I
+          385      36    10     b   I
+          297     124     7 single   Ldev/foltz/squarish/world/tile/TileSingle;
+            0     422     0  this   Ldev/foltz/squarish/Main;
+            0     422     1  tile   Ldev/foltz/squarish/world/tile/ITile;
+            9     413     2 offset   F
+           12     410     3 scaleX   F
+           16     406     4 scaleY   F
+           44     378     5  nval   I
+      StackMapTable: number_of_entries = 7
+        frame_type = 255 /* full_frame */
+          offset_delta = 194
+          locals = [ class dev/foltz/squarish/Main, class dev/foltz/squarish/world/tile/ITile, float, float, float, int, class dev/foltz/squarish/world/tile/TileQuad, top, int, class dev/foltz/squarish/world/cell/Cell ]
+          stack = []
+        frame_type = 7 /* same */
+        frame_type = 254 /* append */
+          offset_delta = 47
+          locals = [ class "[Ldev/foltz/squarish/world/tile/ITile;", int, int ]
+        frame_type = 24 /* same */
+        frame_type = 255 /* full_frame */
+          offset_delta = 5
+          locals = [ class dev/foltz/squarish/Main, class dev/foltz/squarish/world/tile/ITile, float, float, float, int, class dev/foltz/squarish/world/tile/TileQuad ]
+          stack = []
+        frame_type = 250 /* chop */
+          offset_delta = 2
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 136
+
+  public void renderGUI();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=1, args_size=1
+         0: aload_0
+         1: invokevirtual #137                // Method push:()V
+         4: aload_0
+         5: iconst_0
+         6: invokevirtual #157                // Method stroke:(I)V
+         9: aload_0
+        10: sipush        255
+        13: invokevirtual #216                // Method fill:(I)V
+        16: aload_0
+        17: ldc           #218                // float 16.0f
+        19: invokevirtual #219                // Method textSize:(F)V
+        22: aload_0
+        23: aload_0
+        24: getfield      #222                // Field frameRate:F
+        27: invokedynamic #225,  0            // InvokeDynamic #2:makeConcatWithConstants:(F)Ljava/lang/String;
+        32: ldc           #33                 // float 24.0f
+        34: ldc           #33                 // float 24.0f
+        36: invokevirtual #229                // Method text:(Ljava/lang/String;FF)V
+        39: aload_0
+        40: getstatic     #60                 // Field world:Ldev/foltz/squarish/world/World;
+        43: getfield      #233                // Field dev/foltz/squarish/world/World.chunkUpdates:I
+        46: invokedynamic #236,  0            // InvokeDynamic #3:makeConcatWithConstants:(I)Ljava/lang/String;
+        51: ldc           #33                 // float 24.0f
+        53: ldc           #239                // float 40.0f
+        55: invokevirtual #229                // Method text:(Ljava/lang/String;FF)V
+        58: aload_0
+        59: getstatic     #60                 // Field world:Ldev/foltz/squarish/world/World;
+        62: getfield      #240                // Field dev/foltz/squarish/world/World.cellUpdates:I
+        65: invokedynamic #243,  0            // InvokeDynamic #4:makeConcatWithConstants:(I)Ljava/lang/String;
+        70: ldc           #33                 // float 24.0f
+        72: ldc           #244                // float 56.0f
+        74: invokevirtual #229                // Method text:(Ljava/lang/String;FF)V
+        77: aload_0
+        78: invokevirtual #200                // Method pop:()V
+        81: return
+      LineNumberTable:
+        line 121: 0
+        line 122: 4
+        line 123: 9
+        line 124: 16
+        line 125: 22
+        line 126: 39
+        line 127: 58
+        line 128: 77
+        line 129: 81
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      82     0  this   Ldev/foltz/squarish/Main;
+
+  public int getCameraOffsetX();
+    descriptor: ()I
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #245                // Field width:I
+         4: getstatic     #68                 // Field dev/foltz/squarish/world/Chunk.CHUNK_SIZE:I
+         7: bipush        8
+         9: imul
+        10: isub
+        11: iconst_2
+        12: idiv
+        13: ireturn
+      LineNumberTable:
+        line 132: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      14     0  this   Ldev/foltz/squarish/Main;
+
+  public int getCameraOffsetY();
+    descriptor: ()I
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #248                // Field height:I
+         4: getstatic     #68                 // Field dev/foltz/squarish/world/Chunk.CHUNK_SIZE:I
+         7: bipush        8
+         9: imul
+        10: isub
+        11: iconst_2
+        12: idiv
+        13: ireturn
+      LineNumberTable:
+        line 136: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      14     0  this   Ldev/foltz/squarish/Main;
+
+  public int getMouseInWorldX();
+    descriptor: ()I
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: aload_0
+         1: getfield      #251                // Field mouseX:I
+         4: aload_0
+         5: invokevirtual #254                // Method getCameraOffsetX:()I
+         8: isub
+         9: istore_1
+        10: iload_1
+        11: i2f
+        12: ldc           #215                // float 8.0f
+        14: fdiv
+        15: f2d
+        16: invokestatic  #257                // Method java/lang/Math.floor:(D)D
+        19: d2i
+        20: ireturn
+      LineNumberTable:
+        line 140: 0
+        line 141: 10
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      21     0  this   Ldev/foltz/squarish/Main;
+           10      11     1    mx   I
+
+  public int getMouseInWorldY();
+    descriptor: ()I
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: aload_0
+         1: getfield      #263                // Field mouseY:I
+         4: aload_0
+         5: invokevirtual #266                // Method getCameraOffsetY:()I
+         8: isub
+         9: istore_1
+        10: iload_1
+        11: i2f
+        12: ldc           #215                // float 8.0f
+        14: fdiv
+        15: f2d
+        16: invokestatic  #257                // Method java/lang/Math.floor:(D)D
+        19: d2i
+        20: ireturn
+      LineNumberTable:
+        line 145: 0
+        line 146: 10
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      21     0  this   Ldev/foltz/squarish/Main;
+           10      11     1    my   I
+
+  public void draw();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=5, args_size=1
+         0: aload_0
+         1: invokevirtual #269                // Method getMouseInWorldX:()I
+         4: istore_1
+         5: aload_0
+         6: invokevirtual #272                // Method getMouseInWorldY:()I
+         9: istore_2
+        10: aload_0
+        11: getfield      #9                  // Field mouseLeftPressed:Z
+        14: ifeq          32
+        17: getstatic     #60                 // Field world:Ldev/foltz/squarish/world/World;
+        20: iload_1
+        21: iload_2
+        22: getstatic     #275                // Field dev/foltz/squarish/world/cell/CellEmpty.INSTANCE:Ldev/foltz/squarish/world/cell/CellEmpty;
+        25: invokevirtual #77                 // Method dev/foltz/squarish/world/World.setCellAt:(IILdev/foltz/squarish/world/cell/Cell;)Z
+        28: pop
+        29: goto          106
+        32: aload_0
+        33: getfield      #15                 // Field mouseRightPressed:Z
+        36: ifeq          106
+        39: getstatic     #60                 // Field world:Ldev/foltz/squarish/world/World;
+        42: iload_1
+        43: iconst_1
+        44: isub
+        45: iload_2
+        46: aload_0
+        47: getfield      #22                 // Field cellFactory:Ljava/util/function/Supplier;
+        50: invokeinterface #281,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+        55: checkcast     #1                  // class dev/foltz/squarish/world/cell/Cell
+        58: invokevirtual #77                 // Method dev/foltz/squarish/world/World.setCellAt:(IILdev/foltz/squarish/world/cell/Cell;)Z
+        61: pop
+        62: getstatic     #60                 // Field world:Ldev/foltz/squarish/world/World;
+        65: iload_1
+        66: iload_2
+        67: aload_0
+        68: getfield      #22                 // Field cellFactory:Ljava/util/function/Supplier;
+        71: invokeinterface #281,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+        76: checkcast     #1                  // class dev/foltz/squarish/world/cell/Cell
+        79: invokevirtual #77                 // Method dev/foltz/squarish/world/World.setCellAt:(IILdev/foltz/squarish/world/cell/Cell;)Z
+        82: pop
+        83: getstatic     #60                 // Field world:Ldev/foltz/squarish/world/World;
+        86: iload_1
+        87: iconst_1
+        88: iadd
+        89: iload_2
+        90: aload_0
+        91: getfield      #22                 // Field cellFactory:Ljava/util/function/Supplier;
+        94: invokeinterface #281,  1          // InterfaceMethod java/util/function/Supplier.get:()Ljava/lang/Object;
+        99: checkcast     #1                  // class dev/foltz/squarish/world/cell/Cell
+       102: invokevirtual #77                 // Method dev/foltz/squarish/world/World.setCellAt:(IILdev/foltz/squarish/world/cell/Cell;)Z
+       105: pop
+       106: getstatic     #60                 // Field world:Ldev/foltz/squarish/world/World;
+       109: invokevirtual #285                // Method dev/foltz/squarish/world/World.update:()V
+       112: aload_0
+       113: sipush        204
+       116: invokevirtual #288                // Method background:(I)V
+       119: aload_0
+       120: invokevirtual #254                // Method getCameraOffsetX:()I
+       123: istore_3
+       124: aload_0
+       125: invokevirtual #266                // Method getCameraOffsetY:()I
+       128: istore        4
+       130: aload_0
+       131: invokevirtual #137                // Method push:()V
+       134: aload_0
+       135: iload_3
+       136: i2f
+       137: iload         4
+       139: i2f
+       140: invokevirtual #146                // Method translate:(FF)V
+       143: aload_0
+       144: getstatic     #60                 // Field world:Ldev/foltz/squarish/world/World;
+       147: invokevirtual #291                // Method renderWorld:(Ldev/foltz/squarish/world/World;)V
+       150: aload_0
+       151: invokevirtual #200                // Method pop:()V
+       154: aload_0
+       155: invokevirtual #295                // Method renderGUI:()V
+       158: return
+      LineNumberTable:
+        line 151: 0
+        line 152: 5
+        line 153: 10
+        line 154: 17
+        line 156: 32
+        line 157: 39
+        line 158: 62
+        line 159: 83
+        line 162: 106
+        line 164: 112
+        line 165: 119
+        line 166: 124
+        line 167: 130
+        line 168: 134
+        line 169: 143
+        line 170: 150
+        line 171: 154
+        line 174: 158
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0     159     0  this   Ldev/foltz/squarish/Main;
+            5     154     1    mx   I
+           10     149     2    my   I
+          124      35     3 cameraOffsetX   I
+          130      29     4 cameraOffsetY   I
+      StackMapTable: number_of_entries = 2
+        frame_type = 253 /* append */
+          offset_delta = 32
+          locals = [ int, int ]
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 73
+
+  public void mousePressed(processing.event.MouseEvent);
+    descriptor: (Lprocessing/event/MouseEvent;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: invokevirtual #298                // Method processing/event/MouseEvent.getButton:()I
+         4: lookupswitch  { // 2
+                      37: 32
+                      39: 40
+                 default: 45
+            }
+        32: aload_0
+        33: iconst_1
+        34: putfield      #9                  // Field mouseLeftPressed:Z
+        37: goto          45
+        40: aload_0
+        41: iconst_1
+        42: putfield      #15                 // Field mouseRightPressed:Z
+        45: return
+      LineNumberTable:
+        line 178: 0
+        line 179: 32
+        line 180: 40
+        line 182: 45
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      46     0  this   Ldev/foltz/squarish/Main;
+            0      46     1 event   Lprocessing/event/MouseEvent;
+      StackMapTable: number_of_entries = 3
+        frame_type = 32 /* same */
+        frame_type = 7 /* same */
+        frame_type = 4 /* same */
+
+  public void mouseReleased(processing.event.MouseEvent);
+    descriptor: (Lprocessing/event/MouseEvent;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: invokevirtual #298                // Method processing/event/MouseEvent.getButton:()I
+         4: lookupswitch  { // 2
+                      37: 32
+                      39: 40
+                 default: 45
+            }
+        32: aload_0
+        33: iconst_0
+        34: putfield      #9                  // Field mouseLeftPressed:Z
+        37: goto          45
+        40: aload_0
+        41: iconst_0
+        42: putfield      #15                 // Field mouseRightPressed:Z
+        45: return
+      LineNumberTable:
+        line 186: 0
+        line 187: 32
+        line 188: 40
+        line 190: 45
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      46     0  this   Ldev/foltz/squarish/Main;
+            0      46     1 event   Lprocessing/event/MouseEvent;
+      StackMapTable: number_of_entries = 3
+        frame_type = 32 /* same */
+        frame_type = 7 /* same */
+        frame_type = 4 /* same */
+
+  public void keyPressed(processing.event.KeyEvent);
+    descriptor: (Lprocessing/event/KeyEvent;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_1
+         1: invokevirtual #303                // Method processing/event/KeyEvent.getKey:()C
+         4: lookupswitch  { // 5
+                      32: 68
+                     100: 80
+                     114: 104
+                     115: 56
+                     119: 92
+                 default: 108
+            }
+        56: aload_0
+        57: invokedynamic #18,  0             // InvokeDynamic #0:get:()Ljava/util/function/Supplier;
+        62: putfield      #22                 // Field cellFactory:Ljava/util/function/Supplier;
+        65: goto          108
+        68: aload_0
+        69: invokedynamic #309,  0            // InvokeDynamic #5:get:()Ljava/util/function/Supplier;
+        74: putfield      #22                 // Field cellFactory:Ljava/util/function/Supplier;
+        77: goto          108
+        80: aload_0
+        81: invokedynamic #310,  0            // InvokeDynamic #6:get:()Ljava/util/function/Supplier;
+        86: putfield      #22                 // Field cellFactory:Ljava/util/function/Supplier;
+        89: goto          108
+        92: aload_0
+        93: invokedynamic #311,  0            // InvokeDynamic #7:get:()Ljava/util/function/Supplier;
+        98: putfield      #22                 // Field cellFactory:Ljava/util/function/Supplier;
+       101: goto          108
+       104: aload_0
+       105: invokevirtual #54                 // Method initWorld:()V
+       108: return
+      LineNumberTable:
+        line 194: 0
+        line 195: 56
+        line 196: 68
+        line 197: 80
+        line 198: 92
+        line 199: 104
+        line 201: 108
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0     109     0  this   Ldev/foltz/squarish/Main;
+            0     109     1 event   Lprocessing/event/KeyEvent;
+      StackMapTable: number_of_entries = 6
+        frame_type = 56 /* same */
+        frame_type = 11 /* same */
+        frame_type = 11 /* same */
+        frame_type = 11 /* same */
+        frame_type = 11 /* same */
+        frame_type = 3 /* same */
+
+  public void keyReleased(processing.event.KeyEvent);
+    descriptor: (Lprocessing/event/KeyEvent;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=0, locals=2, args_size=2
+         0: return
+      LineNumberTable:
+        line 205: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       1     0  this   Ldev/foltz/squarish/Main;
+            0       1     1 event   Lprocessing/event/KeyEvent;
+
+  public static void main(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: ldc           #10                 // class dev/foltz/squarish/Main
+         2: iconst_0
+         3: anewarray     #312                // class java/lang/String
+         6: invokestatic  #314                // Method processing/core/PApplet.main:(Ljava/lang/Class;[Ljava/lang/String;)V
+         9: return
+      LineNumberTable:
+        line 208: 0
+        line 209: 9
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0      10     0  args   [Ljava/lang/String;
+}
+SourceFile: "Main.java"
+BootstrapMethods:
+  0: #385 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #392 ()Ljava/lang/Object;
+      #393 REF_newInvokeSpecial dev/foltz/squarish/world/cell/CellSand."<init>":()V
+      #397 ()Ldev/foltz/squarish/world/cell/Cell;
+  1: #385 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #399 (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      #401 REF_invokeVirtual dev/foltz/squarish/Main.lambda$renderTile$0:(FFFLjava/lang/Float;Ljava/lang/Float;)Ljava/lang/Float;
+      #404 (Ljava/lang/Float;Ljava/lang/Float;)Ljava/lang/Float;
+  2: #406 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #412 FPS: \u0001
+  3: #406 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #414 Chunk updates: \u0001
+  4: #406 REF_invokeStatic java/lang/invoke/StringConcatFactory.makeConcatWithConstants:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #416 Cell updates: \u0001
+  5: #385 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #392 ()Ljava/lang/Object;
+      #418 REF_newInvokeSpecial dev/foltz/squarish/world/cell/CellStone."<init>":()V
+      #397 ()Ldev/foltz/squarish/world/cell/Cell;
+  6: #385 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #392 ()Ljava/lang/Object;
+      #419 REF_newInvokeSpecial dev/foltz/squarish/world/cell/CellDirt."<init>":()V
+      #397 ()Ldev/foltz/squarish/world/cell/Cell;
+  7: #385 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #392 ()Ljava/lang/Object;
+      #423 REF_newInvokeSpecial dev/foltz/squarish/world/cell/CellWater."<init>":()V
+      #397 ()Ldev/foltz/squarish/world/cell/Cell;
+InnerClasses:
+  public static final #432= #428 of #430; // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
