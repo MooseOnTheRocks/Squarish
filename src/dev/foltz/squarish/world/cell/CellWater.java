@@ -20,22 +20,22 @@ public class CellWater extends Cell {
         }
         else {
             if (Math.random() > 0.5) {
-                if (world.getCellAt(x + 1, y).isEmpty()) {
-                    world.setCellAt(x + 1, y, this);
+                if (world.getCellAt(x + 1, y + 1).isEmpty()) {
+                    world.setCellAt(x + 1, y + 1, this);
                     world.setCellAt(x, y, CellEmpty.INSTANCE);
                 }
-                else if (world.getCellAt(x + 1, y + 1).isEmpty()) {
-                    world.setCellAt(x + 1, y + 1, this);
+                else if (world.getCellAt(x + 1, y).isEmpty()) {
+                    world.setCellAt(x + 1, y, this);
                     world.setCellAt(x, y, CellEmpty.INSTANCE);
                 }
             }
             else {
-                if (world.getCellAt(x - 1, y).isEmpty()) {
-                    world.setCellAt(x - 1, y, this);
+                if (world.getCellAt(x - 1, y + 1).isEmpty()) {
+                    world.setCellAt(x - 1, y + 1, this);
                     world.setCellAt(x, y, CellEmpty.INSTANCE);
                 }
-                else if (world.getCellAt(x - 1, y + 1).isEmpty()) {
-                    world.setCellAt(x - 1, y + 1, this);
+                else if (world.getCellAt(x - 1, y).isEmpty()) {
+                    world.setCellAt(x - 1, y, this);
                     world.setCellAt(x, y, CellEmpty.INSTANCE);
                 }
             }
