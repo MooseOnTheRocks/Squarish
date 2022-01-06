@@ -30,9 +30,11 @@ public class Chunk {
             Cell cell = entry.getValue();
             int x = pos.x();
             int y = pos.y();
+
             Cell inWorld = getCellAt(x, y);
             if (cell == inWorld) {
                 cell.update(world, x, y);
+                cell.lastTick = world.currentTick;
             }
             if (getCellAt(x, y).shouldUpdate(world, x, y)) {
                 markForUpdate(x, y);
@@ -42,7 +44,10 @@ public class Chunk {
 
     public void markForUpdate(int x, int y) {
         if (inRange(x, y)) {
-            markedForUpdate.putIfAbsent(new WorldPos(x, y), getCellAt(x, y));
+            Cell cell = getCellAt(x, y);
+            if (!cell.isEmpty()) {
+                markedForUpdate.putIfAbsent(new WorldPos(x, y), cell);
+            }
         }
     }
 
