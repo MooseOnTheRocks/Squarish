@@ -34,6 +34,7 @@ public class Chunk {
             Cell inWorld = getCellAt(x, y);
             if (cell == inWorld) {
                 cell.update(world, x, y);
+                world.cellUpdates += 1;
                 cell.lastTick = world.currentTick;
             }
             if (getCellAt(x, y).shouldUpdate(world, x, y)) {

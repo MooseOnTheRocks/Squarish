@@ -4,6 +4,7 @@ import dev.foltz.chunkedquadcells.world.World;
 import dev.foltz.chunkedquadcells.world.cell.Cell;
 
 import java.util.List;
+import java.util.function.BiFunction;
 
 public interface ITile {
     int getX();
@@ -11,6 +12,8 @@ public interface ITile {
     int size();
     boolean isEmpty();
     boolean isContiguous(Class<? extends Cell> cellClass);
+
+    float sampleNoise(BiFunction<Float, Float, Float> noiseFunc);
 
     Cell getCellAt(int x, int y);
     boolean setCellAt(int x, int y, Cell cell);

@@ -5,6 +5,7 @@ import dev.foltz.chunkedquadcells.world.cell.CellEmpty;
 import dev.foltz.chunkedquadcells.world.cell.CellOutOfBounds;
 
 import java.util.Arrays;
+import java.util.function.BiFunction;
 
 public class TileQuad implements ITile {
     public final int x, y;
@@ -19,6 +20,17 @@ public class TileQuad implements ITile {
         this.power = power;
         size = (int) Math.pow(2, power);
         children = new ITile[4];
+    }
+
+    @Override
+    public float sampleNoise(BiFunction<Float, Float, Float> noiseFunc) {
+        float totalNoise = noiseFunc.apply(x + size / 2f, y + size / 2f);
+        for (ITile child : children) {
+            if (child != null) {
+                totalNoise += child.sampleNoise(noiseFunc);
+            }
+        }
+        return totalNoise / 5f;
     }
 
     @Override

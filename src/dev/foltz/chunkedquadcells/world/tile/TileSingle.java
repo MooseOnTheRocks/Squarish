@@ -4,6 +4,8 @@ import dev.foltz.chunkedquadcells.world.World;
 import dev.foltz.chunkedquadcells.world.cell.Cell;
 import dev.foltz.chunkedquadcells.world.cell.CellEmpty;
 
+import java.util.function.BiFunction;
+
 public class TileSingle implements ITile {
     public final int x, y;
     public Cell cell;
@@ -12,6 +14,11 @@ public class TileSingle implements ITile {
         this.x = x;
         this.y = y;
         this.cell = cell;
+    }
+
+    @Override
+    public float sampleNoise(BiFunction<Float, Float, Float> noiseFunc) {
+        return noiseFunc.apply(x + 0.5f, y + 0.5f);
     }
 
     @Override

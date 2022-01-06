@@ -11,6 +11,7 @@ public class World {
     public Set<Chunk> loadedChunks;
     public Set<Chunk> newChunks;
     public int chunkUpdates;
+    public int cellUpdates;
 
     public World() {
         loadedChunks = new HashSet<>();
@@ -18,9 +19,12 @@ public class World {
     }
 
     public void update() {
+        cellUpdates = 0;
+        chunkUpdates = 0;
         for (Chunk chunk : loadedChunks) {
             if (chunk.shouldUpdate()) {
                 chunk.update(this);
+                chunkUpdates += 1;
             }
         }
         currentTick += 1;

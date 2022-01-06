@@ -9,12 +9,16 @@ import processing.core.PApplet;
 import processing.event.KeyEvent;
 import processing.event.MouseEvent;
 
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
+
 import static dev.foltz.chunkedquadcells.world.cell.Cell.CELL_SIZE;
 
 public class Main extends PApplet {
     public static World world;
-    boolean mouseLeftPressed = false;
-    boolean mouseRightPressed = false;
+    public boolean mouseLeftPressed = false;
+    public boolean mouseRightPressed = false;
+    public Supplier<Cell> cellFactory = CellSand::new;
 
     @Override
     public void settings() {
@@ -51,29 +55,35 @@ public class Main extends PApplet {
             int xx = x;
             int yy = y;
             push();
-            fill(255, 0, 0, 200);
+            fill(255, 0, 0, 50);
             rect(xx, yy, CELL_SIZE, CELL_SIZE);
             pop();
         }
     }
 
     public void renderTile(ITile tile) {
+        int nval = (int) map(tile.sampleNoise(this::noise), 0, 1, -50, 50);
+
         if (tile instanceof TileQuad quad) {
             boolean renderChildren = true;
 
             push();
             translate(quad.getX() * CELL_SIZE, quad.getY() * CELL_SIZE);
             Cell cell = quad.getCellAt(quad.getX(), quad.getY());
-            stroke(0);
+            stroke(cell.getColor());
             strokeWeight(1);
             if (quad.isContiguous(cell.getClass())) {
-                fill(cell.getColor());
+                int r = (int) red(cell.getColor());
+                int g = (int) green(cell.getColor());
+                int b = (int) blue(cell.getColor());
+                fill(r + nval, g + nval, b + nval);
                 renderChildren = false;
             }
             else {
-//                noStroke();
+                noStroke();
                 noFill();
             }
+//            noStroke();
             rect(0, 0, quad.size() * CELL_SIZE, quad.size() * CELL_SIZE);
             pop();
 
@@ -88,9 +98,13 @@ public class Main extends PApplet {
         else if (tile instanceof TileSingle single) {
             push();
             translate(single.getX() * CELL_SIZE, single.getY() * CELL_SIZE);
-            stroke(0);
+            stroke(single.cell.getColor());
             strokeWeight(1);
-            fill(single.cell.getColor());
+            int r = (int) red(single.cell.getColor());
+            int g = (int) green(single.cell.getColor());
+            int b = (int) blue(single.cell.getColor());
+            fill(r + nval, g + nval, b + nval);
+//            noStroke();
             rect(0, 0, CELL_SIZE, CELL_SIZE);
             pop();
         }
@@ -103,6 +117,7 @@ public class Main extends PApplet {
         textSize(16);
         text("FPS: " + frameRate, 24, 24);
         text("Chunk updates: " + world.chunkUpdates, 24, 24 + 16);
+        text("Cell updates: " + world.cellUpdates, 24, 24 + 16 * 2);
         pop();
     }
 
@@ -126,17 +141,15 @@ public class Main extends PApplet {
 
     @Override
     public void draw() {
-        int mx = mouseX - getCameraOffsetX();
-        int my = mouseY - getCameraOffsetY();
-        int worldX = (int) Math.floor((float) mx / (float) CELL_SIZE);
-        int worldY = (int) Math.floor((float) my / (float) CELL_SIZE);
+        int mx = getMouseInWorldX();
+        int my = getMouseInWorldY();
         if (mouseLeftPressed) {
-            world.setCellAt(worldX, worldY, CellEmpty.INSTANCE);
+            world.setCellAt(mx, my, CellEmpty.INSTANCE);
         }
         else if (mouseRightPressed) {
-            world.setCellAt(worldX - 1, worldY, new CellSand());
-            world.setCellAt(worldX, worldY, new CellSand());
-            world.setCellAt(worldX + 1, worldY, new CellSand());
+            world.setCellAt(mx - 1, my, cellFactory.get());
+            world.setCellAt(mx, my, cellFactory.get());
+            world.setCellAt(mx + 1, my, cellFactory.get());
         }
 
         world.update();
@@ -149,6 +162,8 @@ public class Main extends PApplet {
         renderWorld(world);
         pop();
         renderGUI();
+
+
     }
 
     @Override
@@ -169,6 +184,14 @@ public class Main extends PApplet {
 
     @Override
     public void keyPressed(KeyEvent event) {
+        switch (event.getKey()) {
+            case 's' -> cellFactory = () -> new CellSand();
+            case ' ' -> cellFactory = () -> new CellStone();
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent event) {
     }
 
     public static void main(String[] args) {
