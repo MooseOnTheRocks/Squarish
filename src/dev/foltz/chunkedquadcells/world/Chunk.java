@@ -76,7 +76,7 @@ public class Chunk {
             WorldPos pos = new WorldPos(x, y);
 
             if (cell.isEmpty()) {
-//                markedForUpdate.remove(pos);
+                markedForUpdate.remove(pos);
             }
             else {
                 markedForUpdate.put(pos, cell);
