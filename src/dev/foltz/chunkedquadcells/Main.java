@@ -43,18 +43,18 @@ public class Main extends PApplet {
 
     public void renderChunk(Chunk chunk) {
         renderTile(chunk.root);
-//        for (WorldPos pos : chunk.markedForUpdate) {
-//            int x = pos.x() * CELL_SIZE;
-//            int y = pos.y() * CELL_SIZE;
-////            int cx = getCameraOffsetX();
-////            int cy = getCameraOffsetY();
-//            int xx = x;
-//            int yy = y;
-//            push();
-//            fill(255, 0, 0, 200);
-//            rect(xx, yy, CELL_SIZE, CELL_SIZE);
-//            pop();
-//        }
+        for (WorldPos pos : chunk.markedForUpdate.keySet()) {
+            int x = pos.x() * CELL_SIZE;
+            int y = pos.y() * CELL_SIZE;
+//            int cx = getCameraOffsetX();
+//            int cy = getCameraOffsetY();
+            int xx = x;
+            int yy = y;
+            push();
+            fill(255, 0, 0, 200);
+            rect(xx, yy, CELL_SIZE, CELL_SIZE);
+            pop();
+        }
     }
 
     public void renderTile(ITile tile) {
@@ -64,14 +64,14 @@ public class Main extends PApplet {
             push();
             translate(quad.getX() * CELL_SIZE, quad.getY() * CELL_SIZE);
             Cell cell = quad.getCellAt(quad.getX(), quad.getY());
+            stroke(0);
+            strokeWeight(1);
             if (quad.isContiguous(cell.getClass())) {
-                stroke(0);
-                strokeWeight(1);
                 fill(cell.getColor());
                 renderChildren = false;
             }
             else {
-                noStroke();
+//                noStroke();
                 noFill();
             }
             rect(0, 0, quad.size() * CELL_SIZE, quad.size() * CELL_SIZE);

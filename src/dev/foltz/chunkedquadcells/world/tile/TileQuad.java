@@ -1,15 +1,10 @@
 package dev.foltz.chunkedquadcells.world.tile;
 
-import dev.foltz.chunkedquadcells.world.World;
 import dev.foltz.chunkedquadcells.world.cell.Cell;
 import dev.foltz.chunkedquadcells.world.cell.CellEmpty;
 import dev.foltz.chunkedquadcells.world.cell.CellOutOfBounds;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Stream;
 
 public class TileQuad implements ITile {
     public final int x, y;
@@ -90,12 +85,7 @@ public class TileQuad implements ITile {
 
     @Override
     public boolean isEmpty() {
-        for (ITile child : children) {
-            if (child != null && !child.isEmpty()) {
-                return false;
-            }
-        }
-        return true;
+        return Arrays.stream(children).noneMatch(tile -> tile != null && !tile.isEmpty());
     }
 
     @Override

@@ -15,22 +15,23 @@ public interface ITile {
     Cell getCellAt(int x, int y);
     boolean setCellAt(int x, int y, Cell cell);
 
-    default boolean inRange(int x, int y) {
-        return x >= getX()
-            && x <  getX() + size()
-            && y >= getY()
-            && y <  getY() + size();
+    default boolean inRange(int ox, int oy) {
+        int x = getX();
+        int y = getY();
+        int size = size();
+        return ox >= x
+            && ox <  x + size
+            && oy >= y
+            && oy <  y + size;
     }
 
-    default boolean isAdjacent(int x, int y) {
-        return inRange(x, y)
-            || inRange(x - 1, y)
-            || inRange(x + 1, y)
-            || inRange(x, y - 1)
-            || inRange(x, y + 1)
-            || inRange(x - 1, y - 1)
-            || inRange(x + 1, y - 1)
-            || inRange(x - 1, y + 1)
-            || inRange(x + 1, y + 1);
+    default boolean isAdjacent(int ox, int oy) {
+        int x = getX();
+        int y = getY();
+        int size = size();
+        return ox >  x
+            && ox <= x + size
+            && oy >  y
+            && oy <= y + size;
     }
 }

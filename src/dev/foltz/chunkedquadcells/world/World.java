@@ -18,18 +18,22 @@ public class World {
     }
 
     public void update() {
-        chunkUpdates = 0;
-        loadedChunks.stream().filter(Chunk::shouldUpdate).forEach(chunk -> {
-            chunk.update(this);
-            chunkUpdates += 1;
-        });
+        for (Chunk chunk : loadedChunks) {
+            if (chunk.shouldUpdate()) {
+                chunk.update(this);
+            }
+        }
+        currentTick += 1;
         loadedChunks.addAll(newChunks);
         newChunks.clear();
         loadedChunks.removeIf(Chunk::isEmpty);
-        currentTick += 1;
     }
 
     public Cell getCellAt(int x, int y) {
+        if (y >= Chunk.CHUNK_SIZE) {
+            return CellOutOfBounds.INSTANCE;
+        }
+
         Chunk chunk = getChunkAt(x, y);
         return chunk == null ? CellEmpty.INSTANCE : chunk.getCellAt(x, y);
     }
@@ -38,6 +42,13 @@ public class World {
         int cx = (int) Math.floor((float) x / (float) Chunk.CHUNK_SIZE);
         int cy = (int) Math.floor((float) y / (float) Chunk.CHUNK_SIZE);
         return getLoadedChunk(cx, cy).orElse(null);
+    }
+
+    public void markForUpdate(int x, int y) {
+        Chunk chunk = getChunkAt(x, y);
+        if (chunk != null) {
+            chunk.markForUpdate(x, y);
+        }
     }
 
     public boolean setCellAt(int x, int y, Cell cell) {
@@ -50,6 +61,15 @@ public class World {
         Chunk chunk = getLoadedChunk(cx, cy).orElse(createChunk(cx, cy));
 
         if (chunk.setCellAt(x, y, cell)) {
+            markForUpdate(x, y);
+            markForUpdate(x + 1, y);
+            markForUpdate(x - 1, y);
+            markForUpdate(x, y + 1);
+            markForUpdate(x, y - 1);
+            markForUpdate(x + 1, y + 1);
+            markForUpdate(x + 1, y - 1);
+            markForUpdate(x - 1, y + 1);
+            markForUpdate(x - 1, y - 1);
             return true;
         }
         return false;
