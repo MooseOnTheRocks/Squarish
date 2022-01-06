@@ -1,6 +1,6 @@
-package dev.foltz.chunkedquadcells.world.cell;
+package dev.foltz.squarish.world.cell;
 
-import dev.foltz.chunkedquadcells.world.World;
+import dev.foltz.squarish.world.World;
 
 public abstract class Cell {
     public static final int CELL_SIZE = 8;

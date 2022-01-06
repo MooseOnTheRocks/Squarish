@@ -1,10 +1,10 @@
-package dev.foltz.chunkedquadcells;
+package dev.foltz.squarish;
 
-import dev.foltz.chunkedquadcells.world.*;
-import dev.foltz.chunkedquadcells.world.cell.*;
-import dev.foltz.chunkedquadcells.world.tile.ITile;
-import dev.foltz.chunkedquadcells.world.tile.TileQuad;
-import dev.foltz.chunkedquadcells.world.tile.TileSingle;
+import dev.foltz.squarish.world.*;
+import dev.foltz.squarish.world.cell.*;
+import dev.foltz.squarish.world.tile.ITile;
+import dev.foltz.squarish.world.tile.TileQuad;
+import dev.foltz.squarish.world.tile.TileSingle;
 import processing.core.PApplet;
 import processing.event.KeyEvent;
 import processing.event.MouseEvent;
@@ -12,7 +12,7 @@ import processing.event.MouseEvent;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
-import static dev.foltz.chunkedquadcells.world.cell.Cell.CELL_SIZE;
+import static dev.foltz.squarish.world.cell.Cell.CELL_SIZE;
 
 public class Main extends PApplet {
     public static World world;
@@ -47,22 +47,25 @@ public class Main extends PApplet {
 
     public void renderChunk(Chunk chunk) {
         renderTile(chunk.root);
-        for (WorldPos pos : chunk.markedForUpdate.keySet()) {
-            int x = pos.x() * CELL_SIZE;
-            int y = pos.y() * CELL_SIZE;
-//            int cx = getCameraOffsetX();
-//            int cy = getCameraOffsetY();
-            int xx = x;
-            int yy = y;
-            push();
-            fill(255, 0, 0, 50);
-            rect(xx, yy, CELL_SIZE, CELL_SIZE);
-            pop();
-        }
+//        for (WorldPos pos : chunk.markedForUpdate.keySet()) {
+//            int x = pos.x() * CELL_SIZE;
+//            int y = pos.y() * CELL_SIZE;
+////            int cx = getCameraOffsetX();
+////            int cy = getCameraOffsetY();
+//            int xx = x;
+//            int yy = y;
+//            push();
+//            fill(255, 0, 0, 50);
+//            rect(xx, yy, CELL_SIZE, CELL_SIZE);
+//            pop();
+//        }
     }
 
     public void renderTile(ITile tile) {
-        int nval = (int) map(tile.sampleNoise(this::noise), 0, 1, -50, 50);
+        float offset = millis() * 0.0001f;
+        float scaleX = 0.1f;
+        float scaleY = 0.1f;
+        int nval = (int) map(tile.sampleNoise((x, y) -> noise(x * scaleX, y * scaleY, offset)), 0, 1, -50, 50);
 
         if (tile instanceof TileQuad quad) {
             boolean renderChildren = true;

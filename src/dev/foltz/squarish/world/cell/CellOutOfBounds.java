@@ -1,4 +1,4 @@
-package dev.foltz.chunkedquadcells.world.cell;
+package dev.foltz.squarish.world.cell;
 
 public class CellOutOfBounds extends Cell {
     public static final CellOutOfBounds INSTANCE = new CellOutOfBounds();

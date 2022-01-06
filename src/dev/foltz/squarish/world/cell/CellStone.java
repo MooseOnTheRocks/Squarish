@@ -1,4 +1,4 @@
-package dev.foltz.chunkedquadcells.world.cell;
+package dev.foltz.squarish.world.cell;
 
 public class CellStone extends Cell {
     @Override

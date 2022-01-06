@@ -1,8 +1,8 @@
-package dev.foltz.chunkedquadcells.world.tile;
+package dev.foltz.squarish.world.tile;
 
-import dev.foltz.chunkedquadcells.world.World;
-import dev.foltz.chunkedquadcells.world.cell.Cell;
-import dev.foltz.chunkedquadcells.world.cell.CellEmpty;
+import dev.foltz.squarish.world.World;
+import dev.foltz.squarish.world.cell.Cell;
+import dev.foltz.squarish.world.cell.CellEmpty;
 
 import java.util.function.BiFunction;
 

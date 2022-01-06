@@ -1,8 +1,8 @@
-package dev.foltz.chunkedquadcells.world;
+package dev.foltz.squarish.world;
 
-import dev.foltz.chunkedquadcells.world.cell.Cell;
-import dev.foltz.chunkedquadcells.world.tile.ITile;
-import dev.foltz.chunkedquadcells.world.tile.TileQuad;
+import dev.foltz.squarish.world.cell.Cell;
+import dev.foltz.squarish.world.tile.ITile;
+import dev.foltz.squarish.world.tile.TileQuad;
 
 import java.util.*;
 
@@ -32,7 +32,7 @@ public class Chunk {
             int y = pos.y();
 
             Cell inWorld = getCellAt(x, y);
-            if (cell == inWorld) {
+            if (cell == inWorld && cell.lastTick != world.currentTick) {
                 cell.update(world, x, y);
                 world.cellUpdates += 1;
                 cell.lastTick = world.currentTick;

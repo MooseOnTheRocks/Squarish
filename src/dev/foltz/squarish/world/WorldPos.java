@@ -1,4 +1,4 @@
-package dev.foltz.chunkedquadcells.world;
+package dev.foltz.squarish.world;
 
 public record WorldPos(int x, int y) {
 }
