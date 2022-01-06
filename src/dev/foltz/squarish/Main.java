@@ -2,6 +2,9 @@ package dev.foltz.squarish;
 
 import dev.foltz.squarish.world.*;
 import dev.foltz.squarish.world.cell.*;
+import dev.foltz.squarish.world.selection.Selection;
+import dev.foltz.squarish.world.selection.SelectionCell;
+import dev.foltz.squarish.world.selection.SelectionCircle;
 import dev.foltz.squarish.world.tile.ITile;
 import dev.foltz.squarish.world.tile.TileQuad;
 import dev.foltz.squarish.world.tile.TileSingle;
@@ -9,7 +12,6 @@ import processing.core.PApplet;
 import processing.event.KeyEvent;
 import processing.event.MouseEvent;
 
-import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
 import static dev.foltz.squarish.world.cell.Cell.CELL_SIZE;
@@ -41,6 +43,19 @@ public class Main extends PApplet {
         for (int i = 0; i < Chunk.CHUNK_SIZE; i++) {
             world.setCellAt(i, Chunk.CHUNK_SIZE - 1, new CellStone());
         }
+    }
+
+    public void renderSelection(Selection selection) {
+        int x = selection.x;
+        int y = selection.y;
+        push();
+        stroke(255, 0, 0);
+        strokeWeight(1);
+        noFill();
+        for (SelectionCell sel : selection.cellsWithin(world)) {
+            rect(sel.x * CELL_SIZE, sel.y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+        }
+        pop();
     }
 
     public void renderWorld(World world) {
@@ -146,17 +161,46 @@ public class Main extends PApplet {
         return (int) Math.floor((float) my / (float) CELL_SIZE);
     }
 
+//    int sw = 5;
+//    int sh = 5;
+//    SelectionRect selection;
+
+    int sr = 2;
+    SelectionCircle selection;
+
     @Override
     public void draw() {
         int mx = getMouseInWorldX();
         int my = getMouseInWorldY();
+
+        if (mouseLeftPressed || mouseRightPressed) {
+            if (selection == null) {
+                selection = new SelectionCircle(mx, my, sr);
+            }
+        }
+        else {
+            selection = null;
+        }
+
+        if (selection != null) {
+            selection.x = mx;
+            selection.y = my;
+            selection.radius = sr;
+        }
+
         if (mouseLeftPressed) {
-            world.setCellAt(mx, my, CellEmpty.INSTANCE);
+            selection.cellsWithin(world).forEach(selection -> {
+                int x = selection.x;
+                int y = selection.y;
+                world.setCellAt(x, y, CellEmpty.INSTANCE);
+            });
         }
         else if (mouseRightPressed) {
-            world.setCellAt(mx - 1, my, cellFactory.get());
-            world.setCellAt(mx, my, cellFactory.get());
-            world.setCellAt(mx + 1, my, cellFactory.get());
+            selection.cellsWithin(world).forEach(selection -> {
+                int x = selection.x;
+                int y = selection.y;
+                world.setCellAt(x, y, cellFactory.get());
+            });
         }
 
         world.update();
@@ -167,10 +211,11 @@ public class Main extends PApplet {
         push();
         translate(cameraOffsetX, cameraOffsetY);
         renderWorld(world);
+        if (selection != null) {
+            renderSelection(selection);
+        }
         pop();
         renderGUI();
-
-
     }
 
     @Override
@@ -197,6 +242,8 @@ public class Main extends PApplet {
             case 'd' -> cellFactory = CellDirt::new;
             case 'w' -> cellFactory = CellWater::new;
             case 'r' -> initWorld();
+            case '1' -> { sr += 1; }
+            case '2' -> { sr -= 1; }
         }
     }
 
