@@ -74,6 +74,7 @@ public class Main extends PApplet {
 //            int xx = x;
 //            int yy = y;
 //            push();
+//            noStroke();
 //            fill(255, 0, 0, 50);
 //            rect(xx, yy, CELL_SIZE, CELL_SIZE);
 //            pop();
@@ -179,7 +180,7 @@ public class Main extends PApplet {
             }
         }
         else {
-            selection = null;
+//            selection = null;
         }
 
         if (selection != null) {
